@@ -1,9 +1,15 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
     <>
-      <h1 className="mt-10 text-center text-4xl font-bold text-teal-600">
-        Hello World
-      </h1>
+      <main className="overflow-x-hidden">
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </main>
     </>
   );
 }
