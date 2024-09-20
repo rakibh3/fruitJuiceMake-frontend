@@ -7,6 +7,7 @@ const NavbarMenu = [
   { name: "Coins", link: "/coins" },
   { name: "User", link: "/user" },
   { name: "Logout", link: "/logout" },
+  { name: "Login", link: "/login" },
 ];
 
 const Navbar = () => {
@@ -28,7 +29,7 @@ const Navbar = () => {
               <li key={item.name}>
                 <a
                   href={item.link}
-                  className="hover:text-primary #ef4444 inline-block hover:shadow-[0_3px_0_-1px]"
+                  className="#ef4444 inline-block hover:text-primary hover:shadow-[0_3px_0_-1px]"
                 >
                   {item.name}
                 </a>
