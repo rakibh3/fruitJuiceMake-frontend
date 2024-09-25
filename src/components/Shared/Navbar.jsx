@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu } from "lucide-react";
 import { LeafyGreen } from "lucide-react";
 import ResponsiveMenu from "./ResponsiveMenu";
+import { motion } from "framer-motion";
 
 const NavbarMenu = [
   { name: "Home", link: "/" },
@@ -18,7 +19,12 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className="container flex items-center justify-between py-4 md:pt-4">
+        <motion.div
+          initial={{ opacity: 0, y: -100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="container flex items-center justify-between py-4 md:pt-4"
+        >
           {/* Logo Section */}
           <div className="flex items-center gap-2 text-2xl font-medium uppercase">
             <p className="text-primary">Fruit</p>
@@ -46,7 +52,7 @@ const Navbar = () => {
           <div className="md:hidden" onClick={() => setOpen(!open)}>
             <Menu className="text-4xl" />
           </div>
-        </div>
+        </motion.div>
       </nav>
       <ResponsiveMenu open={open} />
     </>
