@@ -41,7 +41,7 @@ const Hero = () => {
             </motion.p>
             {/* Button */}
             <motion.div
-              variants={FadeRight(1.6)}
+              variants={FadeRight(0.4)}
               initial="hidden"
               animate="visible"
               className="flex justify-center gap-10 md:justify-start"
