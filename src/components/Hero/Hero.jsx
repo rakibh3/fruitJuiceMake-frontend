@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="relative z-10 flex flex-col justify-center py-14 md:py-0">
           <div className="space-y-6 text-center md:text-left lg:max-w-[400px]">
             <motion.h1
-              variants={FadeRight(0.6)}
+              variants={FadeRight(0.4)}
               initial="hidden"
               animate="visible"
               className="font-averia text-5xl font-bold leading-relaxed lg:text-6xl xl:leading-loose"
@@ -23,7 +23,7 @@ const Hero = () => {
               Fresh <span className="text-secondary">Fruits!</span>
             </motion.h1>
             <motion.p
-              variants={FadeRight(0.9)}
+              variants={FadeRight(0.8)}
               initial="hidden"
               animate="visible"
               className="text-2xl tracking-wide"
@@ -46,17 +46,17 @@ const Hero = () => {
               animate="visible"
               className="flex justify-center gap-10 md:justify-start"
             >
-              <button className="primary-btn flex items-center gap-2">
+              <button className="primary-btn up flex items-center gap-2">
                 <span>
                   <Eye></Eye>
                 </span>
-                See recipes
+                See Recipes
               </button>
               <button className="primary-btn flex items-center gap-2">
                 <span>
                   <BadgePlus />
                 </span>
-                Add recipes
+                Add Recipe
               </button>
             </motion.div>
           </div>
