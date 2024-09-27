@@ -5,7 +5,7 @@ import Footer from "./components/Shared/Footer";
 function App() {
   return (
     <>
-      <main className="overflow-x-hidden">
+      <main className="overflow-x-hidden bg-[#F1F5F9]">
         <Navbar />
         <Outlet />
         <Footer />
