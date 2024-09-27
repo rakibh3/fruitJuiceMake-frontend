@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const ImageSlider = ({ tripImgs }) => {
   const [activeImgIndex, setActiveImgIndex] = useState(0);
@@ -14,7 +15,10 @@ const ImageSlider = ({ tripImgs }) => {
       </div>
       <div className="flex flex-row gap-2 md:w-[150px] md:shrink-0 md:flex-col lg:w-[180px]">
         {tripImgs.map((tripImg, i) => (
-          <div
+          <motion.div
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
             key={i}
             onClick={() => setActiveImgIndex(i)}
             className={`relative aspect-[4/3] flex-1 overflow-hidden rounded-lg md:w-full ${
@@ -28,10 +32,11 @@ const ImageSlider = ({ tripImgs }) => {
             />
             <span
               className={`absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gray-100/40 transition ${
-                activeImgIndex !== i && "bg-transparent"
+                activeImgIndex !== i &&
+                "rounded-lg border-2 border-gray-400 bg-transparent"
               }`}
             />
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
