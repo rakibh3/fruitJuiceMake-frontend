@@ -6,7 +6,31 @@
 
 @layer components {
   .primary-btn {
-    @apply rounded-xl bg-primary px-3 py-2 font-semibold text-white shadow-[0px_10px_14px_-7px_#de0029] duration-300 hover:!scale-110;
+    @apply rounded-md bg-primary px-3 py-2 font-medium text-white shadow-[0px_10px_14px_-7px_#de0029] transition duration-300 hover:!scale-110;
+  }
+
+  .card {
+    @apply min-h-[10rem] overflow-hidden rounded-md bg-white text-gray-700 shadow-lg;
+  }
+
+  .badge {
+    @apply rounded-full bg-gray-100 px-3 py-1 text-xs;
+  }
+
+  .product-title {
+    @apply overflow-hidden overflow-ellipsis whitespace-nowrap text-2xl font-semibold;
+  }
+
+  .discount-percent {
+    @apply rounded-md bg-green-400 px-1.5 py-0.5 text-xs font-semibold text-white;
+  }
+
+  .card-btn {
+    @apply rounded-md bg-primary/80 px-6 py-2 text-center font-medium tracking-wider text-white transition hover:bg-primary/90;
+  }
+
+  .card-icon {
+    @apply flex w-20 items-center justify-center rounded-md bg-gray-300/60 transition hover:bg-gray-300/80;
   }
 }
 

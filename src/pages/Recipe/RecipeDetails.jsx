@@ -26,7 +26,7 @@ const dummyTripData = {
 
 const RecipeDetails = () => {
   return (
-    <div className="container">
+    <div className="container my-24">
       <ImageSlider tripImgs={dummyTripData?.photos || []} />
     </div>
   );

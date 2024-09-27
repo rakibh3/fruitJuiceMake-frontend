@@ -1,13 +1,13 @@
 import Category from "../../components/Category/Category";
 import Hero from "../../components/Hero/Hero";
-import RecipeDetails from "../Recipe/RecipeDetails";
+import RecipeCard from "../Recipe/RecipeCard";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <Category />
-      <RecipeDetails />
+      <RecipeCard />
     </>
   );
 };
