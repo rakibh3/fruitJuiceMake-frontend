@@ -1,27 +1,43 @@
 import { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import toast from "react-hot-toast";
 
 const UserProfile = ({ user }) => {
   console.log(user);
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
 
   const { logout } = useAuth();
   const handleLogout = () => {
     logout()
       .then(() => {
-        console.log("User logout successfully!");
+        toast.success("Logout Successful!", { duration: 3000 });
       })
       .catch((error) => {
-        console.error("Error logging out user:", error);
+        toast.error("Error logging out user:", error);
       });
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <button
         type="button"
         className="relative h-8 w-8 rounded-full ring-2 ring-primary ring-offset-2"
