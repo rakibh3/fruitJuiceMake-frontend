@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
+import useMenuItems from "../../hooks/useMenuItems";
+import { Link } from "react-router-dom";
 
 const ResponsiveMenu = ({ open }) => {
+  const menuItems = useMenuItems();
   return (
     <AnimatePresence mode="wait">
       {open && (
@@ -13,13 +16,11 @@ const ResponsiveMenu = ({ open }) => {
         >
           <div className="m-6 rounded-3xl bg-primary py-10 text-xl font-semibold uppercase text-white">
             <ul className="flex flex-col items-center gap-10">
-              <li>Home</li>
-              <li>Recipes</li>
-              <li>Add-Recipes</li>
-              <li>Coins</li>
-              <li>User</li>
-              <li>Logout</li>
-              <li>Login</li>
+              {menuItems.map((item) => (
+                <li key={item.name}>
+                  <Link to={item.link}>{item.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
         </motion.div>

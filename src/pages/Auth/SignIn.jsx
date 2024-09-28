@@ -1,14 +1,39 @@
+import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const SignIn = () => {
+  const { signInWithCredential } = useAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+
+    // Sign in user with email and password
+    signInWithCredential(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("User signed in with email and password: ", user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error signing in user: ", errorCode, errorMessage);
+      });
+  };
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <div className="flex w-full flex-1 flex-col items-center justify-center px-4 text-center">
         <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row">
           {/* Sign In */}
-
           <div className="w-full p-5 md:w-3/5">
             <div className="py-10">
               <h2 className="mb-1 text-2xl font-bold tracking-wide text-primary/80 sm:text-3xl">
@@ -17,34 +42,58 @@ const SignIn = () => {
               <div className="mb-3 inline-block w-10 border-2 border-primary/80"></div>
               {/* Sign In form */}
               <div className="flex flex-col items-center">
-                <form action="">
-                  <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
-                    <FaRegEnvelope className="m-2 text-gray-400" />
-                    <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      placeholder="Email"
-                      className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
-                    />
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div>
+                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                      <FaRegEnvelope className="m-2 text-gray-400" />
+                      <input
+                        type="text"
+                        {...register("email", {
+                          required: true,
+                          pattern:
+                            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                        })}
+                        placeholder="Email"
+                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+                      />
+                    </div>
+                    {errors?.email && (
+                      <p className="mb-3 ml-1 mt-[-1.25rem] text-start text-xs text-red-500">
+                        Email is required or invalid
+                      </p>
+                    )}
                   </div>
 
-                  <div className="max-w-sx mb-1 flex w-full items-center rounded-lg bg-gray-100 p-1">
-                    <TbPassword className="m-2 text-gray-400" />
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Password"
-                      className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
-                    />
+                  <div>
+                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                      <TbPassword className="m-2 text-gray-400" />
+                      <input
+                        type="password"
+                        {...register("password", {
+                          required: true,
+                          minLength: 8,
+                        })}
+                        placeholder="Password"
+                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+                      />
+                    </div>
+                    {errors?.password && (
+                      <p className="mb-1 ml-1 mt-[-1.25rem] text-start text-xs text-red-500">
+                        Password is required and must be at least 8 character
+                      </p>
+                    )}
+                    <p className="mb-5 flex w-full max-w-xs justify-end">
+                      <Link to="#" className="text-xs">
+                        Forgot Password?
+                      </Link>
+                    </p>
                   </div>
-                  <p className="mb-5 mt-2 flex w-full max-w-xs justify-end">
-                    <Link to="#" className="text-xs">
-                      Forgot Password?
-                    </Link>
-                  </p>
-                  <button className="block w-full max-w-xs rounded-lg bg-primary/80 p-3 text-center font-semibold text-white hover:bg-primary/90">
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="block w-full max-w-xs rounded-lg bg-primary/80 p-3 text-center font-semibold text-white hover:bg-primary/90"
+                  >
                     Sign in
                   </button>
                 </form>

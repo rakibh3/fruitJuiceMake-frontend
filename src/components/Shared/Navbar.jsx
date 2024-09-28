@@ -1,21 +1,14 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { LeafyGreen } from "lucide-react";
-import ResponsiveMenu from "./ResponsiveMenu";
 import { motion } from "framer-motion";
-
-const NavbarMenu = [
-  { name: "Home", link: "/" },
-  { name: "Recipes", link: "/recipes" },
-  { name: "Add-Recipes", link: "/add-recipes" },
-  { name: "Coins", link: "/coins" },
-  { name: "User", link: "/user" },
-  { name: "Logout", link: "/logout" },
-  { name: "Login", link: "/login" },
-];
+import ResponsiveMenu from "./ResponsiveMenu";
+import useMenuItems from "../../hooks/useMenuItems";
 
 const Navbar = () => {
+  const NavbarMenu = useMenuItems();
   const [open, setOpen] = useState(false);
+
   return (
     <>
       <nav className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center border-b bg-white/95 backdrop-blur-sm md:h-14">
