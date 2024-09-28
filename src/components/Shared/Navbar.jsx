@@ -4,8 +4,12 @@ import { LeafyGreen } from "lucide-react";
 import { motion } from "framer-motion";
 import ResponsiveMenu from "./ResponsiveMenu";
 import useMenuItems from "../../hooks/useMenuItems";
+import AuthAction from "../AuthAction/AuthAction";
+import UserProfile from "../UserProfile/UserProfile";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
   const NavbarMenu = useMenuItems();
   const [open, setOpen] = useState(false);
 
@@ -45,6 +49,8 @@ const Navbar = () => {
           <div className="md:hidden" onClick={() => setOpen(!open)}>
             <Menu className="text-4xl" />
           </div>
+
+          {user?.email ? <UserProfile user={user} /> : <AuthAction />}
         </motion.div>
       </nav>
       <ResponsiveMenu open={open} />
