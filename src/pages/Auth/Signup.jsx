@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const { createUserWithCredential } = useAuth();
+  const { createUserWithCredential, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
@@ -23,6 +23,8 @@ const Signup = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         if (user) {
+          // Update user profile
+          updateUserProfile(name);
           reset();
           navigate("/signin");
           toast.success("Account created successfully");
