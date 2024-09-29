@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import toast from "react-hot-toast";
+import { BsCoin } from "react-icons/bs";
 
 const UserProfile = ({ user }) => {
   console.log(user);
@@ -38,16 +39,22 @@ const UserProfile = ({ user }) => {
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
-      <button
-        type="button"
-        className="relative h-8 w-8 rounded-full ring-2 ring-primary ring-offset-2"
-        id="menu-button"
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        onClick={handleToggle}
-      >
-        <img src="" alt="" className="rounded-full object-fill" />
-      </button>
+      <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center gap-2 rounded-2xl border-2 border-rose-500 px-[4px] py-[6px]">
+          <BsCoin className="h-5 w-5 text-yellow-500" />
+          <span className="font-bold text-gray-800">100</span>
+        </div>
+        <button
+          type="button"
+          className="relative h-8 w-8 rounded-full ring-2 ring-primary ring-offset-2"
+          id="menu-button"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          <img src="" alt="" className="rounded-full object-fill" />
+        </button>
+      </div>
 
       <div
         className={`absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${

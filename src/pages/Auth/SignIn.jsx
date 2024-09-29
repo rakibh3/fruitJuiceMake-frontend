@@ -30,8 +30,8 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <div className="flex w-full flex-1 flex-col items-center justify-center px-4 text-center">
+    <div className="container flex min-h-screen flex-col items-center justify-center py-2">
+      <div className="flex w-full flex-1 flex-col items-center justify-center text-center">
         <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row">
           {/* Sign In */}
           <div className="w-full p-5 md:w-3/5">

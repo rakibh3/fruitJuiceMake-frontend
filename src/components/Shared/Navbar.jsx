@@ -22,12 +22,18 @@ const Navbar = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="container flex items-center justify-between py-4 md:pt-4"
         >
-          {/* Logo Section */}
-          <div className="flex items-center gap-2 text-2xl font-medium uppercase">
-            <p className="text-primary">Fruit</p>
-            <p className="text-secondary">Blender</p>
-            <LeafyGreen className="text-green-500" />
-          </div>
+          <di className="flex items-center justify-center gap-2">
+            {/* Mobile HamburgeMenu Section */}
+            <div className="md:hidden" onClick={() => setOpen(!open)}>
+              <Menu className="text-4xl" />
+            </div>
+            {/* Logo Section */}
+            <div className="flex items-center gap-2 text-2xl font-medium uppercase">
+              {/* <p className="text-primary">Fruit</p> */}
+              <p className="text-secondary">Blender</p>
+              <LeafyGreen className="text-green-500" />
+            </div>
+          </di>
 
           {/* Menu Section */}
           <div className="hidden md:block">
@@ -43,11 +49,6 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Mobile HamburgeMenu Section */}
-          <div className="md:hidden" onClick={() => setOpen(!open)}>
-            <Menu className="text-4xl" />
           </div>
 
           {user?.email ? <UserProfile user={user} /> : <AuthAction />}
