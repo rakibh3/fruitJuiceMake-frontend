@@ -1,16 +1,19 @@
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const { signInWithCredential } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -20,12 +23,15 @@ const SignIn = () => {
     signInWithCredential(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User signed in with email and password: ", user);
+        if (user) {
+          reset();
+          navigate("/");
+          toast.success("Sign in successful");
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error signing in user: ", errorCode, errorMessage);
+        toast.error(`Error signing in: ${errorCode}`);
       });
   };
 

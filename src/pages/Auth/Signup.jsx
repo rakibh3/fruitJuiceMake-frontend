@@ -1,32 +1,36 @@
 import { useForm } from "react-hook-form";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const { createUserWithCredential } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
     const { name, email, password } = data;
 
-    console.log(name);
-
     // Create user with email and password
     createUserWithCredential(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User created with email and password: ", user);
+        if (user) {
+          reset();
+          navigate("/signin");
+          toast.success("Account created successfully");
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error creating user: ", errorCode, errorMessage);
+        toast.error(`Error creating account: ${errorCode}`);
       });
   };
 

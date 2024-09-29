@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import RecipeDetails from "../pages/Recipe/RecipeDetails";
 import SignIn from "../pages/Auth/SignIn";
 import Signup from "../pages/Auth/Signup";
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
 
 export const router = createBrowserRouter([
   {
@@ -16,15 +18,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/signin",
-        element: <SignIn />,
+        element: (
+          <PublicRoute>
+            <SignIn />,
+          </PublicRoute>
+        ),
       },
       {
         path: "/signup",
-        element: <Signup />,
+        element: (
+          <PublicRoute>
+            <Signup />,
+          </PublicRoute>
+        ),
       },
       {
-        path: "/recipe/details",
-        element: <RecipeDetails />,
+        path: "/recipes",
+        element: (
+          <PrivateRoute>
+            <RecipeDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },
