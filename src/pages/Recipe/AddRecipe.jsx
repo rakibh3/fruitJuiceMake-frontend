@@ -2,18 +2,23 @@ import { Controller, useForm } from "react-hook-form";
 import Editor from "../../components/Shared/Editor";
 import SubmitLoader from "../../components/PageLoader/SubmitLoader";
 
+import { useState } from "react";
+import ImageUploader from "../../components/Shared/ImageUploader";
+
 const AddRecipe = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
     reset,
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    // Submit the form data to your API or perform any other action
+    const recipeData = { ...data, image: selectedFile };
+    console.log(recipeData);
   };
 
   const categories = [
@@ -27,7 +32,7 @@ const AddRecipe = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="container my-16 mt-24 min-h-screen md:px-20">
+      <div className="container my-16 mt-24 min-h-screen max-w-6xl md:px-20">
         <h2 className="text-lg font-semibold leading-10 tracking-wide">
           Create Recipe
         </h2>
@@ -45,9 +50,9 @@ const AddRecipe = () => {
                 />
               </div>
               <div>
-                {errors.location && (
+                {errors.recipeName && (
                   <p className="mt-2 text-xs text-rose-500">
-                    {String(errors.location.message)}
+                    Recipe name is required
                   </p>
                 )}
               </div>
@@ -72,7 +77,7 @@ const AddRecipe = () => {
               <div>
                 {errors.category && (
                   <p className="mt-2 text-xs text-rose-500">
-                    {String(errors.category.message)}
+                    Category is required
                   </p>
                 )}
               </div>
@@ -81,10 +86,13 @@ const AddRecipe = () => {
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
             {/* TODO: Add more input here */}
+            {/* <input  type="file" /> */}
           </div>
 
           <div className="grid grid-cols-1 gap-10">
-            <div>{/* TODO: Images file add to here */}</div>
+            <div>
+              <ImageUploader setSelectedFile={setSelectedFile} />
+            </div>
 
             {/* Description */}
             <div>
