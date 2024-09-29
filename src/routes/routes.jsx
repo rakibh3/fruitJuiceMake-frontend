@@ -6,6 +6,7 @@ import SignIn from "../pages/Auth/SignIn";
 import Signup from "../pages/Auth/Signup";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import AddRecipe from "../pages/Recipe/AddRecipe";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             <RecipeDetails />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/add-recipes",
+        element: <AddRecipe />,
       },
     ],
   },
