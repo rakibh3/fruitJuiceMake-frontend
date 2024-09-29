@@ -22,7 +22,7 @@ const Navbar = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="container flex items-center justify-between py-4 md:pt-4"
         >
-          <di className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             {/* Mobile HamburgeMenu Section */}
             <div className="md:hidden" onClick={() => setOpen(!open)}>
               <Menu className="text-4xl" />
@@ -33,7 +33,7 @@ const Navbar = () => {
               <p className="text-secondary">Blender</p>
               <LeafyGreen className="text-green-500" />
             </div>
-          </di>
+          </div>
 
           {/* Menu Section */}
           <div className="hidden md:block">
@@ -53,8 +53,8 @@ const Navbar = () => {
 
           {user?.email ? <UserProfile user={user} /> : <AuthAction />}
         </motion.div>
+        <ResponsiveMenu open={open} />
       </nav>
-      <ResponsiveMenu open={open} />
     </>
   );
 };

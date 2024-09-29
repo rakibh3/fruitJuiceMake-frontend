@@ -47,9 +47,7 @@ const UserProfile = ({ user }) => {
         <button
           type="button"
           className="relative h-8 w-8 rounded-full ring-2 ring-primary ring-offset-2"
-          id="menu-button"
           aria-expanded={isOpen}
-          aria-haspopup="true"
           onClick={handleToggle}
         >
           <img src="" alt="" className="rounded-full object-fill" />
@@ -60,34 +58,34 @@ const UserProfile = ({ user }) => {
         className={`absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
           isOpen ? "" : "hidden"
         }`}
-        role="menu"
-        aria-orientation="vertical"
-        aria-labelledby="menu-button"
       >
-        <div className="py-1" role="none">
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700"
-            role="menuitem"
-            id="menu-item-4"
-          >
-            Share
-          </a>
-          <a
-            href="#"
-            className="block px-4 py-2 text-sm text-gray-700"
-            role="menuitem"
-            id="menu-item-5"
-          >
-            Add to favorites
-          </a>
+        {/* User name */}
+        <div className="py-1">
+          <span className="block px-4 py-2 text-sm text-gray-700">
+            <p className="text-base font-medium">Rakib Hasan</p>
+            <p>@rakib</p>
+          </span>
         </div>
-        <div className="py-1" role="none">
+
+        {/* User Profile */}
+        <div className="py-1">
+          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
+            Dashboard
+          </Link>
+          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
+            Profile
+          </Link>
+          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
+            Setting
+          </Link>
+        </div>
+
+        {/* Logout Option */}
+        <div className="py-1">
           <Link
             type="button"
             onClick={handleLogout}
             className="block px-4 py-2 text-sm text-gray-700"
-            role="menuitem"
           >
             Logout
           </Link>
