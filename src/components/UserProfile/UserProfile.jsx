@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { BsCoin } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import avatar from "../../assets/avatar/avatar.jpeg";
 import { useState, useEffect, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import useCoin from "../../hooks/useCoin";
@@ -42,7 +43,7 @@ const UserProfile = ({ user }) => {
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <div className="flex items-center justify-center gap-2">
-        <div className="flex items-center gap-2 rounded-2xl border-2 border-rose-500 px-[4px] py-[6px]">
+        <div className="flex items-center gap-2 rounded-2xl border-2 border-rose-500 px-[6px] py-[6px]">
           <BsCoin className="h-5 w-5 text-yellow-500" />
           <span className="font-bold text-gray-800">{coins}</span>
         </div>
@@ -53,7 +54,7 @@ const UserProfile = ({ user }) => {
           onClick={handleToggle}
         >
           <img
-            src={user?.photoURL || ""}
+            src={user?.photoURL || avatar}
             alt={user?.displayName}
             // title={user?.displayName}
             className="rounded-full object-fill"
