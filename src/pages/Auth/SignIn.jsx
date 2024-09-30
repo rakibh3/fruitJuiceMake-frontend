@@ -1,11 +1,14 @@
-import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaRegEnvelope } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
+import usePublicAxios from "../../hooks/useAxiosPublic";
+import { handleError } from "../../error/errorHandler";
 
 const SignIn = () => {
+  const publicAxios = usePublicAxios();
   const navigate = useNavigate();
   const { signInWithCredential } = useAuth();
 
@@ -23,7 +26,24 @@ const SignIn = () => {
     signInWithCredential(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        const { email, displayName, photoURL } = user;
+
         if (user) {
+          publicAxios
+            .post("/user", {
+              displayName,
+              email,
+              photoURL,
+            })
+            .then((response) => {
+              const token = response?.data?.data.token;
+              localStorage.setItem("accessToken", token);
+            })
+            .catch((error) => {
+              handleError(error);
+            });
+
+          // Reset form
           reset();
           navigate("/");
           toast.success("Sign in successful");

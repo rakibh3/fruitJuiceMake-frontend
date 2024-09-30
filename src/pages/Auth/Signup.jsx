@@ -1,13 +1,17 @@
-import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
+import { handleError } from "../../error/errorHandler";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
+import usePublicAxios from "../../hooks/useAxiosPublic";
 
 const Signup = () => {
+  const publicAxios = usePublicAxios();
   const navigate = useNavigate();
   const { createUserWithCredential, updateUserProfile } = useAuth();
+
   const {
     register,
     handleSubmit,
@@ -15,25 +19,52 @@ const Signup = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { name, email, password } = data;
 
-    // Create user with email and password
-    createUserWithCredential(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        if (user) {
-          // Update user profile
-          updateUserProfile(name);
-          reset();
-          navigate("/signin");
-          toast.success("Account created successfully");
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        toast.error(`Error creating account: ${errorCode}`);
-      });
+    try {
+      // Create user with email and password
+      await createUserWithCredential(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(`Sign Up`, user);
+          if (user) {
+            // Update user profile
+            updateUserProfile(name);
+
+            // Create user in the database
+            publicAxios
+              .post("/user", {
+                displayName: name,
+                email: user.email,
+                photoURL: user.photoURL || null,
+              })
+              .then((response) => {
+                const token = response?.data?.data.token;
+                localStorage.setItem("accessToken", token);
+              })
+              .catch((error) => {
+                handleError(error);
+              });
+
+            // Reset form
+            reset();
+
+            // Redirect to home page
+            navigate("/");
+
+            // Show success message
+            toast.success("Account created successfully");
+          }
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          toast.error(`Error creating account: ${errorCode}`);
+        });
+    } catch (error) {
+      console.error("Error creating account:", error);
+      toast.error(`Error creating account: ${error.message}`);
+    }
   };
 
   return (
@@ -75,14 +106,17 @@ const Signup = () => {
                       <FaRegUser className="m-2 text-gray-400" />
                       <input
                         type="text"
-                        {...register("name", { required: true })}
+                        {...register("name", {
+                          required: true,
+                          pattern: /^[A-Za-z\s]+$/,
+                        })}
                         placeholder="Name"
                         className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
                       />
                     </div>
                     {errors?.name && (
                       <p className="mb-3 ml-1 mt-[-1.25rem] text-start text-xs text-red-500">
-                        Name is required
+                        Name is required & contain only letters!
                       </p>
                     )}
                   </div>
@@ -91,7 +125,7 @@ const Signup = () => {
                     <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
-                        type="text"
+                        type="email"
                         {...register("email", {
                           required: true,
                           pattern:

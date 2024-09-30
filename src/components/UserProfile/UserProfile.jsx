@@ -1,12 +1,11 @@
-import { useState, useEffect } from "react";
-import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
-import { useRef } from "react";
 import toast from "react-hot-toast";
 import { BsCoin } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import useAuth from "../../hooks/useAuth";
+import useCoin from "../../hooks/useCoin";
 
 const UserProfile = ({ user }) => {
-  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
   const handleToggle = () => {
@@ -27,6 +26,9 @@ const UserProfile = ({ user }) => {
   }, [dropdownRef]);
 
   const { logout } = useAuth();
+  const { coins } = useCoin();
+
+  // Logout user handler
   const handleLogout = () => {
     logout()
       .then(() => {
@@ -42,7 +44,7 @@ const UserProfile = ({ user }) => {
       <div className="flex items-center justify-center gap-2">
         <div className="flex items-center gap-2 rounded-2xl border-2 border-rose-500 px-[4px] py-[6px]">
           <BsCoin className="h-5 w-5 text-yellow-500" />
-          <span className="font-bold text-gray-800">100</span>
+          <span className="font-bold text-gray-800">{coins}</span>
         </div>
         <button
           type="button"
@@ -50,7 +52,12 @@ const UserProfile = ({ user }) => {
           aria-expanded={isOpen}
           onClick={handleToggle}
         >
-          <img src="" alt="" className="rounded-full object-fill" />
+          <img
+            src={user?.photoURL || ""}
+            alt={user?.displayName}
+            // title={user?.displayName}
+            className="rounded-full object-fill"
+          />
         </button>
       </div>
 
@@ -62,22 +69,26 @@ const UserProfile = ({ user }) => {
         {/* User name */}
         <div className="py-1">
           <span className="block px-4 py-2 text-sm text-gray-700">
-            <p className="text-base font-medium">Rakib Hasan</p>
-            <p>@rakib</p>
+            <p className="text-base font-medium">{user?.displayName}</p>
+            <p>{user?.email}</p>
           </span>
         </div>
 
-        {/* User Profile */}
+        {/* User Profile Options */}
         <div className="py-1">
-          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
-            Dashboard
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
-            Profile
-          </Link>
-          <Link href="#" className="block px-4 py-2 text-sm text-gray-700">
-            Setting
-          </Link>
+          {[
+            { label: "Dashboard", link: "/dashboard" },
+            { label: "Profile", link: "/profile" },
+            { label: "Setting", link: "/setting" },
+          ].map((item) => (
+            <Link
+              key={item.label}
+              href={item.link}
+              className="block px-4 py-2 text-sm text-gray-700"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         {/* Logout Option */}

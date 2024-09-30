@@ -12,17 +12,17 @@ const CategorysData = [
     image: apple,
   },
   {
-    id: 1,
+    id: 2,
     title: "Oranges",
     image: orange,
   },
   {
-    id: 1,
+    id: 3,
     title: "Avocado",
     image: avocado,
   },
   {
-    id: 1,
+    id: 4,
     title: "Cherries",
     image: cherries,
   },
