@@ -10,7 +10,7 @@ import { handleError } from "../../error/errorHandler";
 const SignIn = () => {
   const publicAxios = usePublicAxios();
   const navigate = useNavigate();
-  const { signInWithCredential } = useAuth();
+  const { setAuthToken, signInWithCredential } = useAuth();
 
   const {
     register,
@@ -38,6 +38,7 @@ const SignIn = () => {
             .then((response) => {
               const token = response?.data?.data.token;
               localStorage.setItem("accessToken", token);
+              setAuthToken(localStorage.getItem("accessToken"));
             })
             .catch((error) => {
               handleError(error);
