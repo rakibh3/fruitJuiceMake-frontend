@@ -4,14 +4,19 @@ import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar/avatar.jpeg";
 import { useState, useEffect, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
-import useCoin from "../../hooks/useCoin";
+import useCoins from "../../hooks/useCoins";
 
 const UserProfile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const { authToken, logout } = useAuth();
+
+  // Toggle dropdown handler
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
+
+  // Close dropdown when clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -26,9 +31,6 @@ const UserProfile = ({ user }) => {
     };
   }, [dropdownRef]);
 
-  const { logout } = useAuth();
-  const { coins } = useCoin();
-
   // Logout user handler
   const handleLogout = () => {
     logout()
@@ -39,6 +41,8 @@ const UserProfile = ({ user }) => {
         toast.error("Error logging out user:", error);
       });
   };
+
+  const { coins } = useCoins(authToken);
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>

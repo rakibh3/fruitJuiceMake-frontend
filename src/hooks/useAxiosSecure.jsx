@@ -14,7 +14,6 @@ const useSecureAxios = () => {
   secureAxios.interceptors.request.use(
     function (config) {
       const token = localStorage.getItem("accessToken");
-
       config.headers.authorization = token;
       return config;
     },
