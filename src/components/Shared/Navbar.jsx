@@ -7,6 +7,7 @@ import useMenuItems from "../../hooks/useMenuItems";
 import AuthAction from "../AuthAction/AuthAction";
 import UserProfile from "../UserProfile/UserProfile";
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { user } = useAuth();
@@ -40,12 +41,12 @@ const Navbar = () => {
             <ul className="flex items-center gap-6 text-gray-600">
               {NavbarMenu.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.link}
                     className="#ef4444 inline-block hover:text-primary hover:shadow-[0_3px_0_-1px]"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
