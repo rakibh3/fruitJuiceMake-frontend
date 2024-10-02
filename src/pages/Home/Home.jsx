@@ -1,6 +1,6 @@
-import Category from "../../components/Category/Category";
-import Hero from "../../components/Hero/Hero";
-import RecipeCard from "../Recipe/RecipeCard";
+import Category from '../../components/Category/Category'
+import Hero from '../../components/Hero/Hero'
+import RecipeCard from '../Recipe/RecipeCard'
 
 const Home = () => {
   return (
@@ -9,6 +9,6 @@ const Home = () => {
       <Category />
       <RecipeCard />
     </>
-  );
-};
-export default Home;
+  )
+}
+export default Home

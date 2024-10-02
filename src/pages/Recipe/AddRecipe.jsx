@@ -1,12 +1,12 @@
-import { Controller, useForm } from "react-hook-form";
-import Editor from "../../components/Shared/Editor";
-import SubmitLoader from "../../components/PageLoader/SubmitLoader";
+import { Controller, useForm } from 'react-hook-form'
+import Editor from '../../components/Shared/Editor'
+import SubmitLoader from '../../components/PageLoader/SubmitLoader'
 
-import { useState } from "react";
-import ImageUploader from "../../components/Shared/ImageUploader";
+import { useState } from 'react'
+import ImageUploader from '../../components/Shared/ImageUploader'
 
 const AddRecipe = () => {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null)
 
   const {
     register,
@@ -14,21 +14,21 @@ const AddRecipe = () => {
     control,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm()
 
   const onSubmit = (data) => {
-    const recipeData = { ...data, image: selectedFile };
-    console.log(recipeData);
-  };
+    const recipeData = { ...data, image: selectedFile }
+    console.log(recipeData)
+  }
 
   const categories = [
-    { value: "", label: "Select a Category" },
-    { value: "appetizer", label: "Appetizer" },
-    { value: "main_course", label: "Main Course" },
-    { value: "dessert", label: "Dessert" },
-    { value: "snack", label: "Snack" },
-    { value: "beverage", label: "Beverage" },
-  ];
+    { value: '', label: 'Select a Category' },
+    { value: 'appetizer', label: 'Appetizer' },
+    { value: 'main_course', label: 'Main Course' },
+    { value: 'dessert', label: 'Dessert' },
+    { value: 'snack', label: 'Snack' },
+    { value: 'beverage', label: 'Beverage' },
+  ]
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,7 +44,7 @@ const AddRecipe = () => {
                 <h2 className="flex text-gray-500">Recipe Name</h2>
                 <input
                   type="text"
-                  {...register("recipeName", { required: true })}
+                  {...register('recipeName', { required: true })}
                   placeholder="Recipe Name"
                   className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
                 />
@@ -63,7 +63,7 @@ const AddRecipe = () => {
               <div className="flex flex-col gap-2">
                 <h2 className="flex text-gray-500">Category</h2>
                 <select
-                  {...register("category", { required: true })}
+                  {...register('category', { required: true })}
                   className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
                 >
                   {categories.map((cat) => (
@@ -115,13 +115,13 @@ const AddRecipe = () => {
                 disabled={isSubmitting}
                 className="rounded-md bg-primary/80 px-6 py-2 font-medium text-white shadow-lg hover:bg-primary/90"
               >
-                {isSubmitting ? <SubmitLoader /> : "Save"}
+                {isSubmitting ? <SubmitLoader /> : 'Save'}
               </button>
             </div>
           </div>
         </div>
       </div>
     </form>
-  );
-};
-export default AddRecipe;
+  )
+}
+export default AddRecipe

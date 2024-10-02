@@ -1,61 +1,61 @@
-import toast from "react-hot-toast";
-import { FaRegEnvelope } from "react-icons/fa";
-import { TbPassword } from "react-icons/tb";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { usersLoginApi } from "../../api/authApi";
-import { useCallback } from "react";
+import toast from 'react-hot-toast'
+import { FaRegEnvelope } from 'react-icons/fa'
+import { TbPassword } from 'react-icons/tb'
+import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import { usersLoginApi } from '../../api/authApi'
+import { useCallback } from 'react'
 
 const SignIn = () => {
-  const navigate = useNavigate();
-  const { signInWithCredential } = useAuth();
+  const navigate = useNavigate()
+  const { signInWithCredential } = useAuth()
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm()
 
   const onSubmit = useCallback(
     async (data) => {
-      const { email, password } = data;
+      const { email, password } = data
 
       try {
         // Call the login API
-        const response = await usersLoginApi({ email });
+        const response = await usersLoginApi({ email })
 
-        if (!response || !response.success) return;
+        if (!response || !response.success) return
 
-        const token = response.data.token;
+        const token = response.data.token
 
         if (!token) {
-          toast.error("Token not received");
-          return;
+          toast.error('Token not received')
+          return
         }
 
-        localStorage.setItem("accessToken", token);
+        localStorage.setItem('accessToken', token)
 
         // Sign in user with email and password
-        await signInWithCredential(email, password);
+        await signInWithCredential(email, password)
 
         // Reset form
-        reset();
+        reset()
 
         // Redirect to home page
-        navigate("/");
+        navigate('/')
 
         // Show success message
-        toast.success("Sign in successful");
+        toast.success('Sign in successful')
       } catch (error) {
-        if (error.code === "auth/invalid-credential") {
-          toast.error(`Invalid Credential`);
+        if (error.code === 'auth/invalid-credential') {
+          toast.error(`Invalid Credential`)
         }
       }
     },
     [signInWithCredential, navigate, reset],
-  );
+  )
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
@@ -76,7 +76,7 @@ const SignIn = () => {
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
                         type="text"
-                        {...register("email", {
+                        {...register('email', {
                           required: true,
                           pattern:
                             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -97,7 +97,7 @@ const SignIn = () => {
                       <TbPassword className="m-2 text-gray-400" />
                       <input
                         type="password"
-                        {...register("password", {
+                        {...register('password', {
                           required: true,
                           minLength: 8,
                         })}
@@ -158,6 +158,6 @@ const SignIn = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default SignIn;
+  )
+}
+export default SignIn

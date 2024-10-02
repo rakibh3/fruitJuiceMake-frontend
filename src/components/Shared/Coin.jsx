@@ -1,14 +1,14 @@
-import { BsCoin } from "react-icons/bs";
-import useAuth from "../../hooks/useAuth";
-import { memo } from "react";
-import useCoins from "../../hooks/useCoins";
+import { BsCoin } from 'react-icons/bs'
+import useAuth from '../../hooks/useAuth'
+import { memo } from 'react'
+import useCoins from '../../hooks/useCoins'
 
 const Coin = () => {
-  const { user } = useAuth();
-  const { coins } = useCoins();
+  const { user } = useAuth()
+  const { coins } = useCoins()
 
   if (user) {
-    console.log(coins);
+    console.log(coins)
   }
 
   return (
@@ -18,6 +18,6 @@ const Coin = () => {
         <span className="font-bold text-gray-800">{coins}</span>
       </div>
     </>
-  );
-};
-export default memo(Coin);
+  )
+}
+export default memo(Coin)

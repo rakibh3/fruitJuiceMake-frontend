@@ -1,16 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Home from "../pages/Home/Home";
-import RecipeDetails from "../pages/Recipe/RecipeDetails";
-import SignIn from "../pages/Auth/SignIn";
-import Signup from "../pages/Auth/Signup";
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
-import AddRecipe from "../pages/Recipe/AddRecipe";
+import { createBrowserRouter } from 'react-router-dom'
+import App from '../App'
+import Home from '../pages/Home/Home'
+import RecipeDetails from '../pages/Recipe/RecipeDetails'
+import SignIn from '../pages/Auth/SignIn'
+import Signup from '../pages/Auth/Signup'
+import PrivateRoute from './PrivateRoute'
+import PublicRoute from './PublicRoute'
+import AddRecipe from '../pages/Recipe/AddRecipe'
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/signin",
+        path: '/signin',
         element: (
           <PublicRoute>
             <SignIn />,
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/signup",
+        path: '/signup',
         element: (
           <PublicRoute>
             <Signup />,
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/recipes",
+        path: '/recipes',
         element: (
           <PrivateRoute>
             <RecipeDetails />
@@ -42,9 +42,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/add-recipes",
+        path: '/add-recipes',
         element: <AddRecipe />,
       },
     ],
   },
-]);
+])

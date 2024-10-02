@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const ImageUploader = ({ setSelectedFile }) => {
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null)
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-    const reader = new FileReader();
+    setSelectedFile(event.target.files[0])
+    const reader = new FileReader()
     reader.onload = () => {
-      setImagePreview(reader.result);
-    };
-    reader.readAsDataURL(event.target.files[0]);
-  };
+      setImagePreview(reader.result)
+    }
+    reader.readAsDataURL(event.target.files[0])
+  }
 
   return (
     <div className="flex w-full items-center justify-center">
@@ -38,7 +38,7 @@ const ImageUploader = ({ setSelectedFile }) => {
         />
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default ImageUploader;
+export default ImageUploader

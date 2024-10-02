@@ -1,18 +1,18 @@
-import { Navigate, useLocation } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import PageLoader from "../components/PageLoader/PageLoader";
+import { Navigate, useLocation } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
+import PageLoader from '../components/PageLoader/PageLoader'
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-  const location = useLocation();
+  const { user, loading } = useAuth()
+  const location = useLocation()
 
-  if (loading) return <PageLoader />;
+  if (loading) return <PageLoader />
 
   if (user) {
-    return children;
+    return children
   }
 
-  return <Navigate to="/signin" state={{ from: location }} replace />;
-};
+  return <Navigate to="/signin" state={{ from: location }} replace />
+}
 
-export default PrivateRoute;
+export default PrivateRoute

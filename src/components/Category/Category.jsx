@@ -1,32 +1,32 @@
-import { motion } from "framer-motion";
-import { FadeLeft } from "../../utils/animatio";
-import apple from "../../assets/fruits/apple.png";
-import orange from "../../assets/fruits/orange.png";
-import avocado from "../../assets/fruits/avocado.png";
-import cherries from "../../assets/fruits/cherry.png";
+import { motion } from 'framer-motion'
+import { FadeLeft } from '../../utils/animatio'
+import apple from '../../assets/fruits/apple.png'
+import orange from '../../assets/fruits/orange.png'
+import avocado from '../../assets/fruits/avocado.png'
+import cherries from '../../assets/fruits/cherry.png'
 
 const CategorysData = [
   {
     id: 1,
-    title: "Apple",
+    title: 'Apple',
     image: apple,
   },
   {
     id: 2,
-    title: "Oranges",
+    title: 'Oranges',
     image: orange,
   },
   {
     id: 3,
-    title: "Avocado",
+    title: 'Avocado',
     image: avocado,
   },
   {
     id: 4,
-    title: "Cherries",
+    title: 'Cherries',
     image: cherries,
   },
-];
+]
 
 const Category = () => {
   return (
@@ -45,7 +45,7 @@ const Category = () => {
             <motion.div
               variants={FadeLeft(0.4 + index * 0.4)}
               initial="hidden"
-              whileInView={"visible"}
+              whileInView={'visible'}
               whileHover={{ scale: 1.1 }}
               key={category.id}
               className="flex flex-row items-center justify-around gap-3 rounded-3xl bg-white px-4 py-2 shadow-[0_0_22px_0_rgba(0,0,0,0.15)]"
@@ -65,6 +65,6 @@ const Category = () => {
         </div>
       </div>
     </section>
-  );
-};
-export default Category;
+  )
+}
+export default Category

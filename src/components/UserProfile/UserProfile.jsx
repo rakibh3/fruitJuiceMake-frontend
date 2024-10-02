@@ -1,46 +1,46 @@
-import toast from "react-hot-toast";
+import toast from 'react-hot-toast'
 
-import { Link } from "react-router-dom";
-import avatar from "../../assets/avatar/avatar.jpeg";
-import { useState, useEffect, useRef } from "react";
-import useAuth from "../../hooks/useAuth";
-import Coin from "../Shared/Coin";
+import { Link } from 'react-router-dom'
+import avatar from '../../assets/avatar/avatar.jpeg'
+import { useState, useEffect, useRef } from 'react'
+import useAuth from '../../hooks/useAuth'
+import Coin from '../Shared/Coin'
 
 const UserProfile = ({ user }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const { logout } = useAuth();
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef(null)
+  const { logout } = useAuth()
 
   // Toggle dropdown handler
   const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   // Close dropdown when clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
+    }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [dropdownRef])
 
   // Logout user handler
   const handleLogout = () => {
     logout()
       .then(() => {
-        toast.success("Logout Successful!", { duration: 3000 });
+        toast.success('Logout Successful!', { duration: 3000 })
       })
       .catch((error) => {
-        toast.error("Error logging out user:", error);
-      });
-  };
+        toast.error('Error logging out user:', error)
+      })
+  }
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
@@ -63,7 +63,7 @@ const UserProfile = ({ user }) => {
 
       <div
         className={`absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
-          isOpen ? "" : "hidden"
+          isOpen ? '' : 'hidden'
         }`}
       >
         {/* User name */}
@@ -77,9 +77,9 @@ const UserProfile = ({ user }) => {
         {/* User Profile Options */}
         <div className="py-1">
           {[
-            { label: "Dashboard", link: "/dashboard" },
-            { label: "Profile", link: "/profile" },
-            { label: "Setting", link: "/setting" },
+            { label: 'Dashboard', link: '/dashboard' },
+            { label: 'Profile', link: '/profile' },
+            { label: 'Setting', link: '/setting' },
           ].map((item) => (
             <Link
               key={item.label}
@@ -103,6 +103,6 @@ const UserProfile = ({ user }) => {
         </div>
       </div>
     </div>
-  );
-};
-export default UserProfile;
+  )
+}
+export default UserProfile

@@ -12,8 +12,8 @@ export const FadeUp = (delay) => {
         delay: delay,
       },
     },
-  };
-};
+  }
+}
 
 export const FadeLeft = (delay) => {
   return {
@@ -29,8 +29,8 @@ export const FadeLeft = (delay) => {
         delay: delay,
       },
     },
-  };
-};
+  }
+}
 
 export const FadeRight = (delay) => {
   return {
@@ -46,5 +46,5 @@ export const FadeRight = (delay) => {
         delay: delay,
       },
     },
-  };
-};
+  }
+}

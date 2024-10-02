@@ -1,61 +1,61 @@
-import toast from "react-hot-toast";
-import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
-import { TbPassword } from "react-icons/tb";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-import { usersRegisterApi } from "../../api/authApi";
+import toast from 'react-hot-toast'
+import { FaRegEnvelope, FaRegUser } from 'react-icons/fa'
+import { TbPassword } from 'react-icons/tb'
+import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
+import { usersRegisterApi } from '../../api/authApi'
 
 const Signup = () => {
-  const navigate = useNavigate();
-  const { createUserWithCredential, updateUserProfile, logout } = useAuth();
+  const navigate = useNavigate()
+  const { createUserWithCredential, updateUserProfile, logout } = useAuth()
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm()
 
   const onSubmit = async (data) => {
-    const { name, email, password } = data;
+    const { name, email, password } = data
 
     try {
       // Create user with email and password
-      const userCredential = await createUserWithCredential(email, password);
-      const user = userCredential.user;
+      const userCredential = await createUserWithCredential(email, password)
+      const user = userCredential.user
 
       if (user) {
         // Update user profile
-        await updateUserProfile(name);
+        await updateUserProfile(name)
 
         // Create user in the database
         const userData = {
           displayName: name,
           email: user.email,
           photoURL: user.photoURL || null,
-        };
-        const response = await usersRegisterApi(userData);
+        }
+        const response = await usersRegisterApi(userData)
         if (response && response.success) {
-          toast.success(response.message, { duration: 1000 });
+          toast.success(response.message, { duration: 1000 })
         }
 
         // Reset form
-        reset();
+        reset()
 
         // Logout
-        logout();
+        logout()
 
         // Redirect to home page
-        navigate("/");
+        navigate('/')
 
         // Show success message
-        toast.success("You can login now", { duration: 3000 });
+        toast.success('You can login now', { duration: 3000 })
       }
     } catch (error) {
-      toast.error(`Error creating account: ${error.message}`);
+      toast.error(`Error creating account: ${error.message}`)
     }
-  };
+  }
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
@@ -96,7 +96,7 @@ const Signup = () => {
                       <FaRegUser className="m-2 text-gray-400" />
                       <input
                         type="text"
-                        {...register("name", {
+                        {...register('name', {
                           required: true,
                           pattern: /^[A-Za-z\s]+$/,
                         })}
@@ -116,7 +116,7 @@ const Signup = () => {
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
                         type="email"
-                        {...register("email", {
+                        {...register('email', {
                           required: true,
                           pattern:
                             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -137,7 +137,7 @@ const Signup = () => {
                       <TbPassword className="m-2 text-gray-400" />
                       <input
                         type="password"
-                        {...register("password", {
+                        {...register('password', {
                           required: true,
                           minLength: 8,
                         })}
@@ -177,6 +177,6 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default Signup;
+  )
+}
+export default Signup

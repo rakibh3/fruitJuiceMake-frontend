@@ -1,56 +1,41 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import toast from "react-hot-toast";
+import { useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
+import useSecureAxios from './useAxiosSecure'
 
 const useCoins = () => {
-  const [coins, setCoins] = useState(0);
+  const secureAxios = useSecureAxios()
+  const [coins, setCoins] = useState(0)
 
   useEffect(() => {
-    let isMounted = true;
+    let isMounted = true
 
     const fetchCoins = async () => {
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-        toast.error("Access token is missing. Please log in.");
-        return;
+      const coinData = await getCoin(secureAxios)
+      if (isMounted) {
+        setCoins(coinData)
       }
+    }
 
-      try {
-        const coinData = await getCoin(token);
-        if (isMounted) {
-          setCoins(coinData);
-        }
-      } catch (error) {
-        console.error("Error fetching coins:", error);
-      }
-    };
-
-    fetchCoins();
+    fetchCoins()
 
     return () => {
-      isMounted = false;
-    };
-  }, []);
+      isMounted = false
+    }
+  }, [secureAxios])
 
-  return { coins };
-};
+  return { coins }
+}
 
-const getCoin = async (token) => {
+const getCoin = async (secureAxios) => {
   try {
-    const response = await axios.get(`${import.meta.env.VITE_API_URL}/coins`, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await secureAxios('/coins')
 
-    return response?.data?.data?.coin;
+    return response?.data?.data?.coin
   } catch (error) {
     const errorMessage =
-      error?.response?.data?.message || "Error fetching coin data";
-    toast.error(errorMessage, { duration: 2000 });
-    throw error;
+      error?.response?.data?.message || 'Error fetching coin data'
+    toast.error(errorMessage, { duration: 2000 })
   }
-};
+}
 
-export default useCoins;
+export default useCoins

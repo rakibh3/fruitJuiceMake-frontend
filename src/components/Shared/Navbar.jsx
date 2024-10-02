@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { Menu } from "lucide-react";
-import { LeafyGreen } from "lucide-react";
-import { motion } from "framer-motion";
-import ResponsiveMenu from "./ResponsiveMenu";
-import useMenuItems from "../../hooks/useMenuItems";
-import AuthAction from "../AuthAction/AuthAction";
-import UserProfile from "../UserProfile/UserProfile";
-import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { useState } from 'react'
+import { Menu } from 'lucide-react'
+import { LeafyGreen } from 'lucide-react'
+import { motion } from 'framer-motion'
+import ResponsiveMenu from './ResponsiveMenu'
+import useMenuItems from '../../hooks/useMenuItems'
+import AuthAction from '../AuthAction/AuthAction'
+import UserProfile from '../UserProfile/UserProfile'
+import useAuth from '../../hooks/useAuth'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const { user } = useAuth();
-  const NavbarMenu = useMenuItems();
-  const [open, setOpen] = useState(false);
+  const { user } = useAuth()
+  const NavbarMenu = useMenuItems()
+  const [open, setOpen] = useState(false)
 
   return (
     <>
@@ -57,6 +57,6 @@ const Navbar = () => {
         <ResponsiveMenu open={open} />
       </nav>
     </>
-  );
-};
-export default Navbar;
+  )
+}
+export default Navbar

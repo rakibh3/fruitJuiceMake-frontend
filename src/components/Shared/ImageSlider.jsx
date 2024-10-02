@@ -1,35 +1,35 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ImageSlider = ({ tripImgs }) => {
-  const [activeImgIndex, setActiveImgIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [activeImgIndex, setActiveImgIndex] = useState(0)
+  const [direction, setDirection] = useState(0)
 
   const variants = {
     enter: (direction) => ({
       x: direction > 0 ? 300 : -300,
       opacity: 0,
-      position: "absolute",
+      position: 'absolute',
     }),
     center: {
       x: 0,
       opacity: 1,
-      position: "absolute",
+      position: 'absolute',
     },
     exit: (direction) => ({
       x: direction > 0 ? -300 : 300,
       opacity: 0,
-      position: "absolute",
+      position: 'absolute',
     }),
-  };
+  }
 
   const paginate = (newDirection) => {
-    setDirection(newDirection);
+    setDirection(newDirection)
     setActiveImgIndex(
       (prevIndex) =>
         (prevIndex + newDirection + tripImgs.length) % tripImgs.length,
-    );
-  };
+    )
+  }
 
   return (
     <div className="flex flex-col gap-2 rounded-xl bg-white p-2 md:h-[500px] md:flex-row-reverse">
@@ -46,9 +46,9 @@ const ImageSlider = ({ tripImgs }) => {
             exit="exit"
             variants={variants}
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
+              x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 1 },
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
           />
         </AnimatePresence>
@@ -62,29 +62,29 @@ const ImageSlider = ({ tripImgs }) => {
             transition={{ duration: 0.4 }}
             key={i}
             onClick={() => {
-              paginate(i > activeImgIndex ? 1 : -1);
-              setActiveImgIndex(i);
+              paginate(i > activeImgIndex ? 1 : -1)
+              setActiveImgIndex(i)
             }}
             className={`relative aspect-[4/3] flex-1 overflow-hidden rounded-lg md:w-full ${
-              activeImgIndex !== i && "cursor-pointer"
+              activeImgIndex !== i && 'cursor-pointer'
             }`}
           >
             <img
               src={tripImg}
-              alt={"Trip Photo"}
+              alt={'Trip Photo'}
               className="h-full w-full object-cover"
             />
             <span
               className={`absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gray-100/40 transition ${
                 activeImgIndex !== i &&
-                "rounded-lg border-2 border-gray-400 bg-transparent"
+                'rounded-lg border-2 border-gray-400 bg-transparent'
               }`}
             />
           </motion.div>
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ImageSlider;
+export default ImageSlider

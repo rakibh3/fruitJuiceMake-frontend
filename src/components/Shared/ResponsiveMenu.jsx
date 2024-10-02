@@ -1,9 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
-import useMenuItems from "../../hooks/useMenuItems";
-import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from 'framer-motion'
+import useMenuItems from '../../hooks/useMenuItems'
+import { Link } from 'react-router-dom'
 
 const ResponsiveMenu = ({ open }) => {
-  const menuItems = useMenuItems();
+  const menuItems = useMenuItems()
   return (
     <AnimatePresence mode="wait">
       {open && (
@@ -26,6 +26,6 @@ const ResponsiveMenu = ({ open }) => {
         </motion.div>
       )}
     </AnimatePresence>
-  );
-};
-export default ResponsiveMenu;
+  )
+}
+export default ResponsiveMenu

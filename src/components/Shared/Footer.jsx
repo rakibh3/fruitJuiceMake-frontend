@@ -3,6 +3,6 @@ const Footer = () => {
     <div className="container mt-6">
       <h1>Footer</h1>
     </div>
-  );
-};
-export default Footer;
+  )
+}
+export default Footer
