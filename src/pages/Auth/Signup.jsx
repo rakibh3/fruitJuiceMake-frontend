@@ -1,16 +1,14 @@
 import toast from "react-hot-toast";
 import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { TbPassword } from "react-icons/tb";
-import { handleError } from "../../error/errorHandler";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import usePublicAxios from "../../hooks/useAxiosPublic";
+import { usersRegisterApi } from "../../api/usersRegisterApi";
 
 const Signup = () => {
-  const publicAxios = usePublicAxios();
   const navigate = useNavigate();
-  const { createUserWithCredential, updateUserProfile } = useAuth();
+  const { createUserWithCredential, updateUserProfile, logout } = useAuth();
 
   const {
     register,
@@ -24,45 +22,37 @@ const Signup = () => {
 
     try {
       // Create user with email and password
-      await createUserWithCredential(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(`Sign Up`, user);
-          if (user) {
-            // Update user profile
-            updateUserProfile(name);
+      const userCredential = await createUserWithCredential(email, password);
+      const user = userCredential.user;
 
-            // Create user in the database
-            publicAxios
-              .post("/user", {
-                displayName: name,
-                email: user.email,
-                photoURL: user.photoURL || null,
-              })
-              .then((response) => {
-                const token = response?.data?.data.token;
-                localStorage.setItem("accessToken", token);
-              })
-              .catch((error) => {
-                handleError(error);
-              });
+      if (user) {
+        // Update user profile
+        await updateUserProfile(name);
 
-            // Reset form
-            reset();
+        // Create user in the database
+        const userData = {
+          displayName: name,
+          email: user.email,
+          photoURL: user.photoURL || null,
+        };
+        const response = await usersRegisterApi(userData);
+        if (response && response.success) {
+          toast.success(response.message, { duration: 1000 });
+        }
 
-            // Redirect to home page
-            navigate("/");
+        // Reset form
+        reset();
 
-            // Show success message
-            toast.success("Account created successfully");
-          }
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          toast.error(`Error creating account: ${errorCode}`);
-        });
+        // Logout
+        logout();
+
+        // Redirect to home page
+        navigate("/");
+
+        // Show success message
+        toast.success("You can login now", { duration: 3000 });
+      }
     } catch (error) {
-      console.error("Error creating account:", error);
       toast.error(`Error creating account: ${error.message}`);
     }
   };
