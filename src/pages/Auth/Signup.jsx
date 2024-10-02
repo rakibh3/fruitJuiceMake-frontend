@@ -4,7 +4,7 @@ import { TbPassword } from "react-icons/tb";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { usersRegisterApi } from "../../api/usersRegisterApi";
+import { usersRegisterApi } from "../../api/authApi";
 
 const Signup = () => {
   const navigate = useNavigate();

@@ -4,13 +4,11 @@ import { TbPassword } from "react-icons/tb";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import usePublicAxios from "../../hooks/useAxiosPublic";
-import { handleError } from "../../error/errorHandler";
+import { usersLoginApi } from "../../api/authApi";
 
 const SignIn = () => {
-  const publicAxios = usePublicAxios();
   const navigate = useNavigate();
-  const { setAuthToken, signInWithCredential } = useAuth();
+  const { signInWithCredential } = useAuth();
 
   const {
     register,
@@ -19,41 +17,51 @@ const SignIn = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
-    const { email, password } = data;
+  const onSubmit = async (data) => {
+    const { email: loginMail, password } = data;
 
-    // Sign in user with email and password
-    signInWithCredential(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const { email, displayName, photoURL } = user;
+    try {
+      // Sign in user with email and password
+      const userCredential = await signInWithCredential(loginMail, password);
+      const user = userCredential.user;
 
-        if (user) {
-          publicAxios
-            .post("/user", {
-              displayName,
-              email,
-              photoURL,
-            })
-            .then((response) => {
-              const token = response?.data?.data.token;
-              localStorage.setItem("accessToken", token);
-              setAuthToken(localStorage.getItem("accessToken"));
-            })
-            .catch((error) => {
-              handleError(error);
-            });
+      if (!user) {
+        toast.error("User  not found");
+        return;
+      }
 
-          // Reset form
-          reset();
-          navigate("/");
-          toast.success("Sign in successful");
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        toast.error(`Error signing in: ${errorCode}`);
-      });
+      const { email } = user;
+
+      // Call the login API
+      const response = await usersLoginApi({ email });
+
+      if (!response || !response.success) {
+        toast.error("Login failed");
+        return;
+      }
+
+      const token = response.data.token;
+
+      if (!token) {
+        toast.error("Token not received");
+        return;
+      }
+
+      localStorage.setItem("accessToken", token);
+
+      // Reset form
+      reset();
+
+      // Redirect to home page
+      navigate("/");
+
+      // Show success message
+      toast.success("Sign in successful");
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        toast.error(`Invalid Credential`);
+      }
+    }
   };
 
   return (
