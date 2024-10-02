@@ -14,7 +14,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [authToken, setAuthToken] = useState(null);
 
   // Register user with email and password
   const createUserWithCredential = (email, password) => {
@@ -25,6 +24,7 @@ const AuthProvider = ({ children }) => {
   // Sign in user with email and password
   const signInWithCredential = (email, password) => {
     setLoading(true);
+
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -48,24 +48,19 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
-      if (authToken === null) {
-        setAuthToken(localStorage.getItem("accessToken"));
-      }
-
       setLoading(false);
     });
 
     return () => {
       return unsubscribe();
     };
-  }, [authToken]);
+  }, []);
 
   const authInfo = {
     user,
     loading,
     setLoading,
-    authToken,
-    setAuthToken,
+
     createUserWithCredential,
     signInWithCredential,
     logout,

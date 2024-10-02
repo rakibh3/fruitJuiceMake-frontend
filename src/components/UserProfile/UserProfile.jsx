@@ -1,15 +1,15 @@
 import toast from "react-hot-toast";
-import { BsCoin } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar/avatar.jpeg";
 import { useState, useEffect, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
-import useCoins from "../../hooks/useCoins";
+import Coin from "../Shared/Coin";
 
 const UserProfile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { authToken, logout } = useAuth();
+  const { logout } = useAuth();
 
   // Toggle dropdown handler
   const handleToggle = () => {
@@ -42,15 +42,10 @@ const UserProfile = ({ user }) => {
       });
   };
 
-  const { coins } = useCoins(authToken);
-
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       <div className="flex items-center justify-center gap-2">
-        <div className="flex items-center gap-2 rounded-2xl border-2 border-rose-500 px-[6px] py-[6px]">
-          <BsCoin className="h-5 w-5 text-yellow-500" />
-          <span className="font-bold text-gray-800">{coins}</span>
-        </div>
+        <Coin />
         <button
           type="button"
           className="relative h-8 w-8 rounded-full ring-2 ring-primary ring-offset-2"

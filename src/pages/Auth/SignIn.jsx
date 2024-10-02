@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { usersLoginApi } from "../../api/authApi";
+import { useCallback } from "react";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -17,52 +18,44 @@ const SignIn = () => {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    const { email: loginMail, password } = data;
+  const onSubmit = useCallback(
+    async (data) => {
+      const { email, password } = data;
 
-    try {
-      // Sign in user with email and password
-      const userCredential = await signInWithCredential(loginMail, password);
-      const user = userCredential.user;
+      try {
+        // Call the login API
+        const response = await usersLoginApi({ email });
 
-      if (!user) {
-        toast.error("User  not found");
-        return;
+        if (!response || !response.success) return;
+
+        const token = response.data.token;
+
+        if (!token) {
+          toast.error("Token not received");
+          return;
+        }
+
+        localStorage.setItem("accessToken", token);
+
+        // Sign in user with email and password
+        await signInWithCredential(email, password);
+
+        // Reset form
+        reset();
+
+        // Redirect to home page
+        navigate("/");
+
+        // Show success message
+        toast.success("Sign in successful");
+      } catch (error) {
+        if (error.code === "auth/invalid-credential") {
+          toast.error(`Invalid Credential`);
+        }
       }
-
-      const { email } = user;
-
-      // Call the login API
-      const response = await usersLoginApi({ email });
-
-      if (!response || !response.success) {
-        toast.error("Login failed");
-        return;
-      }
-
-      const token = response.data.token;
-
-      if (!token) {
-        toast.error("Token not received");
-        return;
-      }
-
-      localStorage.setItem("accessToken", token);
-
-      // Reset form
-      reset();
-
-      // Redirect to home page
-      navigate("/");
-
-      // Show success message
-      toast.success("Sign in successful");
-    } catch (error) {
-      if (error.code === "auth/invalid-credential") {
-        toast.error(`Invalid Credential`);
-      }
-    }
-  };
+    },
+    [signInWithCredential, navigate, reset],
+  );
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
