@@ -1,9 +1,9 @@
-import { Controller, useForm } from 'react-hook-form'
-import Editor from '../../components/Shared/Editor'
-import SubmitLoader from '../../components/PageLoader/SubmitLoader'
-
 import { useState } from 'react'
-import ImageUploader from '../../components/Shared/ImageUploader'
+import { Controller, useForm } from 'react-hook-form'
+import Editor from '@/components/Shared/Editor'
+import SubmitLoader from '@/components/PageLoader/SubmitLoader'
+import ImageUploader from '@/components/Shared/ImageUploader'
+
 
 const AddRecipe = () => {
   const [selectedFile, setSelectedFile] = useState(null)

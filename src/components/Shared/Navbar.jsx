@@ -1,13 +1,14 @@
-import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { LeafyGreen } from 'lucide-react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import ResponsiveMenu from './ResponsiveMenu'
-import useMenuItems from '../../hooks/useMenuItems'
-import AuthAction from '../AuthAction/AuthAction'
-import UserProfile from '../UserProfile/UserProfile'
-import useAuth from '../../hooks/useAuth'
 import { Link } from 'react-router-dom'
+import ResponsiveMenu from '@/components/Shared/ResponsiveMenu'
+import useMenuItems from '@/hooks/useMenuItems'
+import AuthAction from '@/components/AuthAction/AuthAction'
+import UserProfile from '@/components/UserProfile/UserProfile'
+import useAuth from '@/hooks/useAuth'
+
 
 const Navbar = () => {
   const { user } = useAuth()

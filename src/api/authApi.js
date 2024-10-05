@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { handleError } from '../error/errorHandler'
+import { handleError } from '@/error/errorHandler'
 
 const publicAxios = axios.create({
   baseURL: import.meta.env.VITE_API_URL,

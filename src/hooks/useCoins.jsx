@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import useSecureAxios from './useAxiosSecure'
+import useSecureAxios from '@/hooks/useAxiosSecure'
 
 const useCoins = () => {
   const secureAxios = useSecureAxios()

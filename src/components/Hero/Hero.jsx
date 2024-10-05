@@ -1,9 +1,9 @@
 import { BadgePlus } from 'lucide-react'
 import { Eye } from 'lucide-react'
-import HeroPng from '../../assets/fruit-plate.png'
-import LeafPng from '../../assets/leaf.png'
 import { motion } from 'framer-motion'
-import { FadeRight } from '../../utils/animatio'
+import HeroPng from '@/assets/fruit-plate.png'
+import LeafPng from '@/assets/leaf.png'
+import { FadeRight } from '@/utils/animatio'
 
 const Hero = () => {
   return (

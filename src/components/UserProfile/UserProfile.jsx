@@ -1,10 +1,9 @@
 import toast from 'react-hot-toast'
-
-import { Link } from 'react-router-dom'
-import avatar from '../../assets/avatar/avatar.jpeg'
 import { useState, useEffect, useRef } from 'react'
-import useAuth from '../../hooks/useAuth'
-import Coin from '../Shared/Coin'
+import { Link } from 'react-router-dom'
+import avatar from "@/assets/avatar/avatar.jpeg"
+import useAuth from '@/hooks/useAuth'
+import Coin from '@/components/Shared/Coin'
 
 const UserProfile = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false)

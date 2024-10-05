@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import useMenuItems from '../../hooks/useMenuItems'
 import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import useMenuItems from '@/hooks/useMenuItems'
 
 const ResponsiveMenu = ({ open }) => {
   const menuItems = useMenuItems()

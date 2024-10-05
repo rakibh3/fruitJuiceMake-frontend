@@ -7,7 +7,8 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { createContext, useEffect, useState } from 'react'
-import app from '../firebase/firebase.init'
+import app from '@/firebase/firebase.init'
+
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
 

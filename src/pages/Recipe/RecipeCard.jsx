@@ -1,9 +1,9 @@
-import love from '../../assets/images/love.svg'
-import headphone from '../../assets/images/headphone.jpg'
-import star from '../../assets/images/star.svg'
-import halfStar from '../../assets/images/star-half-fill.svg'
-import emptyStar from '../../assets/images/star-no-fill.svg'
 import { Link } from 'react-router-dom'
+import love from "@/assets/images/love.svg"
+import headphone from "@/assets/images/headphone.jpg"
+import star from "@/assets/images/star.svg"
+import halfStar from "@/assets/images/star-half-fill.svg"
+import emptyStar from "@/assets/images/star-no-fill.svg"
 
 const RecipeCard = () => {
   return (

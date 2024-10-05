@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
-import App from '../App'
-import Home from '../pages/Home/Home'
-import RecipeDetails from '../pages/Recipe/RecipeDetails'
-import SignIn from '../pages/Auth/SignIn'
-import Signup from '../pages/Auth/Signup'
-import PrivateRoute from './PrivateRoute'
-import PublicRoute from './PublicRoute'
-import AddRecipe from '../pages/Recipe/AddRecipe'
+import App from '@/App'
+import PrivateRoute from '@/routes/PrivateRoute'
+import PublicRoute from '@/routes/PublicRoute'
+import Home from '@/pages/Home/Home'
+import SignIn from '@/pages/Auth/SignIn'
+import Signup from '@/pages/Auth/Signup'
+import AddRecipe from '@/pages/Recipe/AddRecipe'
+import RecipeDetails from '@/pages/Recipe/RecipeDetails'
 
 export const router = createBrowserRouter([
   {

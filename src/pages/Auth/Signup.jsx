@@ -1,10 +1,10 @@
-import toast from 'react-hot-toast'
 import { FaRegEnvelope, FaRegUser } from 'react-icons/fa'
 import { TbPassword } from 'react-icons/tb'
+import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
-import { usersRegisterApi } from '../../api/authApi'
+import useAuth from '@/hooks/useAuth'
+import { usersRegisterApi } from '@/api/authApi'
 
 const Signup = () => {
   const navigate = useNavigate()

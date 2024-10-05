@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion'
-import { FadeLeft } from '../../utils/animatio'
-import apple from '../../assets/fruits/apple.png'
-import orange from '../../assets/fruits/orange.png'
-import avocado from '../../assets/fruits/avocado.png'
-import cherries from '../../assets/fruits/cherry.png'
+import { FadeLeft } from '@/utils/animatio'
+import apple from '@/assets/fruits/apple.png'
+import orange from '@/assets/fruits/orange.png'
+import avocado from '@/assets/fruits/avocado.png'
+import cherries from '@/assets/fruits/cherry.png'
 
 const CategorysData = [
   {
