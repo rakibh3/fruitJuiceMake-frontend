@@ -29,7 +29,6 @@ const useCoins = () => {
 const getCoin = async (secureAxios) => {
   try {
     const response = await secureAxios('/coins')
-
     return response?.data?.data?.coin
   } catch (error) {
     const errorMessage =

@@ -5,10 +5,16 @@ import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '@/hooks/useAuth'
 import { usersRegisterApi } from '@/api/authApi'
+import { useCallback } from 'react'
 
 const Signup = () => {
   const navigate = useNavigate()
-  const { createUserWithCredential, updateUserProfile, logout } = useAuth()
+  const {
+    createUserWithCredential,
+    updateUserProfile,
+    deleteUserAccount,
+    logout,
+  } = useAuth()
 
   const {
     register,
@@ -17,45 +23,59 @@ const Signup = () => {
     reset,
   } = useForm()
 
-  const onSubmit = async (data) => {
-    const { name, email, password } = data
+  const onSubmit = useCallback(
+    async (data) => {
+      const { name, email, password } = data
+      let user = null
 
-    try {
-      // Create user with email and password
-      const userCredential = await createUserWithCredential(email, password)
-      const user = userCredential.user
-
-      if (user) {
-        // Update user profile
-        await updateUserProfile(name)
-
-        // Create user in the database
+      try {
+        // Check if user exists in the database
         const userData = {
           displayName: name,
-          email: user.email,
-          photoURL: user.photoURL || null,
+          email: email,
+          photoURL: null,
         }
         const response = await usersRegisterApi(userData)
-        if (response && response.success) {
-          toast.success(response.message, { duration: 1000 })
+
+        if (!response || !response.success) {
+          throw new Error(`Failed to register user`)
         }
+        console.log('Hello before token')
 
-        // Reset form
-        reset()
+        const token = response.data.token
+        localStorage.setItem('accessToken', token)
 
-        // Logout
-        logout()
+        //Create user with email and password in Firebase
+        const userCredential = await createUserWithCredential(email, password)
+        user = userCredential.user
 
-        // Redirect to home page
-        navigate('/')
+        if (user) {
+          // Update user profile in Firebase
+          await updateUserProfile(name)
 
-        // Show success message
-        toast.success('You can login now', { duration: 3000 })
+          // Show success message and reset form
+          toast.success(response.message, { duration: 1000 })
+          reset()
+          logout()
+          navigate('/')
+          toast.success('You can login now', { duration: 3000 })
+        }
+        // eslint-disable-next-line no-unused-vars
+      } catch (error) {
+        if (user) await deleteUserAccount(user)
+        // toast.error(`${(error.message, { duration: 5000 })}`)
+        toast.error('Failed to register user', { duration: 2000 })
       }
-    } catch (error) {
-      toast.error(`Error creating account: ${error.message}`)
-    }
-  }
+    },
+    [
+      createUserWithCredential,
+      updateUserProfile,
+      deleteUserAccount,
+      navigate,
+      reset,
+      logout,
+    ],
+  )
 
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">

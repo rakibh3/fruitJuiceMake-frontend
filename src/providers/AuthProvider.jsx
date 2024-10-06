@@ -5,6 +5,7 @@ import {
   signOut,
   onAuthStateChanged,
   updateProfile,
+  deleteUser
 } from 'firebase/auth'
 import { createContext, useEffect, useState } from 'react'
 import app from '@/firebase/firebase.init'
@@ -44,6 +45,11 @@ const AuthProvider = ({ children }) => {
     })
   }
 
+  const deleteUserAccount = (user) => {
+    setLoading(true)
+    return deleteUser(user)
+  }
+
   // Listen for user auth state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -61,11 +67,11 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     setLoading,
-
     createUserWithCredential,
     signInWithCredential,
     logout,
     updateUserProfile,
+    deleteUserAccount
   }
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

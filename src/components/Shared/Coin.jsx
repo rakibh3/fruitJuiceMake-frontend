@@ -8,7 +8,7 @@ const Coin = () => {
   const { coins } = useCoins()
 
   if (user) {
-    console.log(coins)
+    return null
   }
 
   return (
