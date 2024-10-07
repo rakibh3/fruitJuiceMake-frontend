@@ -3,32 +3,15 @@ import Avatar from '@/assets/avatar/avatar.jpeg'
 import { IoEyeOutline } from 'react-icons/io5'
 import { TbCategory } from 'react-icons/tb'
 import { FaRegCircleUser } from 'react-icons/fa6'
-
-const recipeData = {
-  photos:
-    'https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/d3eb254d-0901-4158-956a-4610180545e5/scarpa-da-running-su-strada-invincible-3-xk5gLh.png',
-  createdBy: {
-    profile: {
-      profilePhoto: 'https://via.placeholder.com/150',
-      name: 'John Doe',
-      bio: 'Passionate traveler who loves exploring new places.',
-    },
-    username: 'john_doe',
-    _count: {
-      trip: 5,
-    },
-  },
-  createdAt: new Date(),
-  location: 'Paris, France',
-  tripType: 'Adventure',
-  itinerary: 'Day 1: Arrival in Paris, Day 2: Eiffel Tower visit, etc.',
-  description: 'This was a wonderful trip exploring the beauty of Paris.',
-}
+import { useLoaderData } from 'react-router-dom'
 
 const RecipeDetails = () => {
+  const recipe = useLoaderData()
+  console.log('Recipe details from loader:', recipe)
+
   return (
     <div className="container my-24">
-      <ImageSlider recipeImage={recipeData?.photos || []} />
+      <ImageSlider recipeImage={recipe?.image} imageAlt={recipe?.title} />
       <div className="flex flex-col gap-3 md:flex-row">
         <div className="my-2 grow">
           <div className="rounded-xl bg-white p-3">
@@ -51,7 +34,7 @@ const RecipeDetails = () => {
 
             <div>
               <h1 className="my-6 text-center text-2xl font-semibold uppercase">
-                Recipe title
+                {recipe?.title}
               </h1>
 
               <div className="mb-4 flex flex-wrap items-center justify-center gap-8 border-y py-1">
@@ -60,7 +43,9 @@ const RecipeDetails = () => {
                     <IoEyeOutline className="size-4 text-gray-600" />
                   </span>
                   <p className="flex gap-1">
-                    <span className="font-bold text-green-800">100</span>
+                    <span className="font-bold text-green-800">
+                      {recipe?.view}
+                    </span>
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -69,7 +54,7 @@ const RecipeDetails = () => {
                   </span>
                   <p className="flex gap-1">
                     <span className="font-medium uppercase text-slate-800">
-                      Apple
+                      {recipe?.category}
                     </span>
                   </p>
                 </div>
@@ -87,13 +72,7 @@ const RecipeDetails = () => {
               </div>
 
               <p className="mt-1 text-sm leading-normal text-slate-700">
-                What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
-                printing and typesetting industry. Lorem Ipsum has been the
-                standard dummy text ever since the 1500s, when an unknown
-                printer took a galley of type and scrambled it to make a type
-                specimen book. It has survived not only five centuries, but also
-                the leap into electronic typesetting, remaining essentially
-                unchanged.
+                {recipe?.description}
               </p>
             </div>
           </div>

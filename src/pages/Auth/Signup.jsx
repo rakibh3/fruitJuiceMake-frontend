@@ -40,7 +40,6 @@ const Signup = () => {
         if (!response || !response.success) {
           throw new Error(`Failed to register user`)
         }
-        console.log('Hello before token')
 
         const token = response.data.token
         localStorage.setItem('accessToken', token)

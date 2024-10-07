@@ -1,5 +1,6 @@
 import useRecipes from '@/hooks/useRecipes'
 import RecipeCard from './RecipeCard'
+import { useNavigate } from 'react-router-dom'
 
 const Recipes = () => {
   const { recipes } = useRecipes()

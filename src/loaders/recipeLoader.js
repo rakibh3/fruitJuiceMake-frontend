@@ -5,6 +5,7 @@ const RECIPE_API_URL = import.meta.env.VITE_API_URL
 
 export const recipeLoader = async ({ params }) => {
   const { recipeId } = params
+
   const token = localStorage.getItem('accessToken')
 
   if (!token) {
@@ -19,7 +20,7 @@ export const recipeLoader = async ({ params }) => {
       },
     })
 
-    return response.data.data
+    return await response.data.data
   } catch (error) {
     console.error('Error fetching recipe:', error)
     if (error.response) {

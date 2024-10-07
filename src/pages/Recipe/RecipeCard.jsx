@@ -7,7 +7,7 @@ import halfStar from '@/assets/images/star-half-fill.svg'
 import emptyStar from '@/assets/images/star-no-fill.svg'
 import PageLoader from '@/components/PageLoader/PageLoader'
 
-const RecipeCard = ({ recipes }) => {
+const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -59,9 +59,16 @@ const RecipeCard = ({ recipes }) => {
 
             {/* Action Button */}
             <div className="mt-5 flex gap-4">
-              <Link to="/recipe/details" className="card-btn">
+              <Link
+                type="button"
+                to={`/recipe/${recipe._id}`}
+                className="card-btn"
+                onClick={() => handleViewRecipeDetails(recipe._id)}
+              >
                 View Details
               </Link>
+
+              {/* Implement Fav */}
               <button className="card-icon">
                 <img src={love} alt="" className="opacity-50" />
               </button>
