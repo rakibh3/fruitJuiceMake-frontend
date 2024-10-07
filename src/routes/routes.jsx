@@ -7,6 +7,8 @@ import SignIn from '@/pages/Auth/SignIn'
 import Signup from '@/pages/Auth/Signup'
 import AddRecipe from '@/pages/Recipe/AddRecipe'
 import RecipeDetails from '@/pages/Recipe/RecipeDetails'
+import { recipeLoader } from '@/loaders/recipeLoader'
+import Recipes from '@/pages/Recipe/Recipes'
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +37,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/recipes',
+        element: <Recipes />,
+      },
+      {
+        path: '/recipe/:recipeId',
+        loader: recipeLoader,
         element: (
           <PrivateRoute>
             <RecipeDetails />

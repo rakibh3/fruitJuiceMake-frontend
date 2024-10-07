@@ -42,7 +42,7 @@ const Navbar = () => {
               {NavbarMenu.map((item) => (
                 <li key={item.name}>
                   <Link
-                    href={item.link}
+                    to={item.link}
                     className="#ef4444 inline-block hover:text-primary hover:shadow-[0_3px_0_-1px]"
                   >
                     {item.name}
