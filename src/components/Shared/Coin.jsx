@@ -1,15 +1,9 @@
 import { BsCoin } from 'react-icons/bs'
 import { memo } from 'react'
-import useAuth from '@/hooks/useAuth'
 import useCoins from '@/hooks/useCoins'
 
 const Coin = () => {
-  const { user } = useAuth()
   const { coins } = useCoins()
-
-  if (user) {
-    return null
-  }
 
   return (
     <>

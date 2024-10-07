@@ -9,7 +9,6 @@ import AuthAction from '@/components/AuthAction/AuthAction'
 import UserProfile from '@/components/UserProfile/UserProfile'
 import useAuth from '@/hooks/useAuth'
 
-
 const Navbar = () => {
   const { user } = useAuth()
   const NavbarMenu = useMenuItems()
