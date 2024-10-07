@@ -4,13 +4,9 @@ import { IoEyeOutline } from 'react-icons/io5'
 import { TbCategory } from 'react-icons/tb'
 import { FaRegCircleUser } from 'react-icons/fa6'
 
-const dummyTripData = {
-  photos: [
-    'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,b_rgb:f5f5f5/3396ee3c-08cc-4ada-baa9-655af12e3120/scarpa-da-running-su-strada-invincible-3-xk5gLh.png',
-    'https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/e44d151a-e27a-4f7b-8650-68bc2e8cd37e/scarpa-da-running-su-strada-invincible-3-xk5gLh.png',
-    'https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/44fc74b6-0553-4eef-a0cc-db4f815c9450/scarpa-da-running-su-strada-invincible-3-xk5gLh.png',
+const recipeData = {
+  photos:
     'https://static.nike.com/a/images/f_auto,b_rgb:f5f5f5,w_440/d3eb254d-0901-4158-956a-4610180545e5/scarpa-da-running-su-strada-invincible-3-xk5gLh.png',
-  ],
   createdBy: {
     profile: {
       profilePhoto: 'https://via.placeholder.com/150',
@@ -32,40 +28,10 @@ const dummyTripData = {
 const RecipeDetails = () => {
   return (
     <div className="container my-24">
-      <ImageSlider tripImgs={dummyTripData?.photos || []} />
+      <ImageSlider recipeImage={recipeData?.photos || []} />
       <div className="flex flex-col gap-3 md:flex-row">
         <div className="my-2 grow">
           <div className="rounded-xl bg-white p-3">
-            {/*TODO: Recipe Creator Profile */}
-            {/* <div className="mb-4 rounded-lg bg-gray-100 p-3 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="relative size-20 shrink-0 rounded sm:size-32">
-                  <img
-                    src={Avatar}
-                    className="h-full w-full rounded object-cover"
-                    alt=""
-                  />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-gray-600 text-lg font-bold leading-tight">
-                    Md Rakibul Hasan
-                  </h4>
-                  <div className="flex flex-col gap-x-5 sm:flex-row">
-                    <p className=" flex items-center gap-1 text-sm">
-                      @rakib
-                    </p>
-                    <p className=" flex items-center gap-1 text-sm">
-                      Dhaka
-                    </p>
-                  </div>
-
-                  <p className=" hidden max-w-lg text-sm sm:line-clamp-3">
-                    This is a bio of the user who created this recipe.
-                  </p>
-                </div>
-              </div>
-            </div> */}
-
             {/* Recipe Creator Profile And Time */}
             <div className="my-2 flex w-full flex-row gap-2 space-y-3 sm:w-auto">
               <div className="flex items-center">
