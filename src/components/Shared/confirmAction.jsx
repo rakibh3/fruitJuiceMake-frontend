@@ -8,7 +8,7 @@ export const confirmAction = ({
   onCancel,
 }) => {
   toast(
-    (t) => (
+    (action) => (
       <div className="flex flex-col items-center gap-2">
         <p className="text-center text-sm font-semibold">{message}</p>
         <div className="flex gap-2">
@@ -16,7 +16,7 @@ export const confirmAction = ({
             className="rounded bg-green-500 px-2 py-1 font-bold text-white hover:bg-green-700"
             onClick={() => {
               onConfirm()
-              toast.dismiss(t.id)
+              toast.dismiss(action.id)
             }}
           >
             {confirmText}
@@ -25,7 +25,7 @@ export const confirmAction = ({
             className="rounded bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-700"
             onClick={() => {
               onCancel()
-              toast.dismiss(t.id)
+              toast.dismiss(action.id)
             }}
           >
             {cancelText}
