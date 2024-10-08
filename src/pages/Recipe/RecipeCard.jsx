@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import love from '@/assets/images/love.svg'
 import headphone from '@/assets/images/headphone.jpg'
@@ -59,14 +58,14 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
 
             {/* Action Button */}
             <div className="mt-5 flex gap-4">
-              <Link
+              <button
                 type="button"
-                to={`/recipe/${recipe._id}`}
+                // to={`/recipe/${recipe._id}`}
                 className="card-btn"
                 onClick={() => handleViewRecipeDetails(recipe._id)}
               >
                 View Details
-              </Link>
+              </button>
 
               {/* Implement Fav */}
               <button className="card-icon">

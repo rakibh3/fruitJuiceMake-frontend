@@ -10,7 +10,9 @@ export const confirmAction = ({
   toast(
     (action) => (
       <div className="flex flex-col items-center gap-2">
-        <p className="text-center text-sm font-semibold">{message}</p>
+        <p className="text-center text-sm font-semibold text-slate-700">
+          {message}
+        </p>
         <div className="flex gap-2">
           <button
             className="rounded bg-green-500 px-2 py-1 font-bold text-white hover:bg-green-700"
@@ -34,7 +36,7 @@ export const confirmAction = ({
       </div>
     ),
     {
-      duration: 8000,
+      duration: 9000,
     },
   )
 }

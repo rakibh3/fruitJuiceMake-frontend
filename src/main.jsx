@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { RouterProvider } from 'react-router-dom'
 import App from '@/App'
 import './index.css'
-import {router} from "@/routes/routes"
+import { router } from '@/routes/routes'
 import AuthProvider from '@/providers/AuthProvider'
 
 createRoot(document.getElementById('root')).render(

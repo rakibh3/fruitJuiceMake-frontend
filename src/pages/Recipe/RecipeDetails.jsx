@@ -6,8 +6,7 @@ import { FaRegCircleUser } from 'react-icons/fa6'
 import { useLoaderData } from 'react-router-dom'
 
 const RecipeDetails = () => {
-  const recipe = useLoaderData()
-  console.log('Recipe details from loader:', recipe)
+  const { recipe, purchased } = useLoaderData()
 
   return (
     <div className="container my-24">
