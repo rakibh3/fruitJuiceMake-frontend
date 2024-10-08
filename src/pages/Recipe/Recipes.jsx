@@ -6,12 +6,14 @@ import { handleError } from '@/error/errorHandler'
 import { useGetRecipeDetails } from '@/hooks/useGetRecipeDetails'
 import { confirmAction } from '@/components/Shared/confirmAction'
 import { useCoinTransfer } from '@/hooks/useCoinTransfer'
+import useCoins from '@/hooks/useCoins'
 
 const Recipes = () => {
   const { recipes } = useRecipes()
   const navigate = useNavigate()
   const { getRecipeDetails } = useGetRecipeDetails()
   const { transferCoins } = useCoinTransfer()
+  const coins = useCoins()
 
   const handleViewRecipeDetails = async (recipeId) => {
     const recipeDetails = await getRecipeDetails(recipeId)
@@ -22,9 +24,11 @@ const Recipes = () => {
           onConfirm: async () => {
             const purchase = await transferCoins(recipeId)
             console.log(purchase)
+
             if (purchase) {
+              coins
               navigate(`/recipe/${recipeId}`)
-            }
+            } else return
           },
           onCancel: () => {
             console.log('Cancelled NO')
