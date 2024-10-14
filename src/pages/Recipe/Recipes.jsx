@@ -11,7 +11,7 @@ import useAuth from '@/hooks/useAuth'
 import toast from 'react-hot-toast'
 // import useCoins from '@/hooks/useCoins'
 
-const Recipes = () => {
+const Recipes = ({ limit }) => {
   const { recipes } = useRecipes()
   const navigate = useNavigate()
   const { getRecipeDetails } = useGetRecipeDetails()
@@ -56,12 +56,22 @@ const Recipes = () => {
     }
   }
 
+  const limitedRecipes = limit ? recipes.slice(0, limit) : recipes
+
   return (
-    <div className="container grid min-h-screen grid-cols-1 items-center justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <div className="container grid grid-cols-1 items-center justify-items-center gap-8 pt-24 md:grid-cols-2 lg:grid-cols-3">
       <RecipeCard
-        recipes={recipes}
+        recipes={limitedRecipes}
         handleViewRecipeDetails={handleViewRecipeDetails}
       />
+      {/* <RecipeCard
+        recipes={limitedRecipes}
+        handleViewRecipeDetails={handleViewRecipeDetails}
+      />
+      <RecipeCard
+        recipes={limitedRecipes}
+        handleViewRecipeDetails={handleViewRecipeDetails}
+      /> */}
     </div>
   )
 }
