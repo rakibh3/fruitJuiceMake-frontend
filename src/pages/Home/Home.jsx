@@ -1,6 +1,7 @@
 import Category from '@/components/Category/Category'
 import Hero from '@/components/Hero/Hero'
 import Recipes from '../Recipe/Recipes'
+import HowItsWork from '@/components/Shared/HowItsWork'
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
           <Recipes limit={6} />
         </div>
       </>
+      <HowItsWork />
     </>
   )
 }
