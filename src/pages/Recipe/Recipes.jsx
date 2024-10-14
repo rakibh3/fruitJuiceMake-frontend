@@ -20,20 +20,20 @@ const Recipes = () => {
   const { user } = useAuth()
 
   const handleViewRecipeDetails = async (recipeId) => {
-    if (!user) {
-      toast.error('Please sign in to view recipe details')
-      navigate('/signin')
-      return
-    }
-
-    const recipeDetails = await getRecipeDetails(recipeId)
     try {
-      if (!recipeDetails?.purchased) {
+      if (!user) {
+        toast.error('Please sign in to view recipe details!')
+        navigate('/signin')
+        return
+      }
+
+      const { purchased } = await getRecipeDetails(recipeId)
+
+      if (!purchased) {
         confirmAction({
           message: 'Not authorized. Spend 10 coins to view?',
           onConfirm: async () => {
             const purchase = await transferCoins(recipeId)
-            console.log(purchase)
 
             if (purchase) {
               mutate([`${import.meta.env.VITE_API_URL}/coins`, token])
@@ -44,7 +44,7 @@ const Recipes = () => {
             }
           },
           onCancel: () => {
-            console.log('Cancelled NO')
+            return
           },
         })
         return
