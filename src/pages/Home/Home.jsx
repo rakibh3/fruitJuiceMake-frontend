@@ -13,7 +13,7 @@ const Home = () => {
           Latest Recipes
         </h1>
         <div className="mb -mt-14">
-          <Recipes limit={1} />
+          <Recipes limit={6} />
         </div>
       </>
     </>
