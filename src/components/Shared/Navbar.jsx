@@ -31,7 +31,7 @@ const Navbar = () => {
             {/* Logo Section */}
             <div className="flex items-center gap-2 text-2xl font-medium uppercase">
               {/* <p className="text-primary">Fruit</p> */}
-              <p className="text-secondary">Blender</p>
+              <p className="text-secondary">Juicers</p>
               <LeafyGreen className="text-green-500" />
             </div>
           </div>
