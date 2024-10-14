@@ -7,6 +7,8 @@ import { useGetRecipeDetails } from '@/hooks/useGetRecipeDetails'
 import { confirmAction } from '@/components/Shared/confirmAction'
 import { useCoinTransfer } from '@/hooks/useCoinTransfer'
 import { mutate } from 'swr'
+import useAuth from '@/hooks/useAuth'
+import toast from 'react-hot-toast'
 // import useCoins from '@/hooks/useCoins'
 
 const Recipes = () => {
@@ -15,39 +17,44 @@ const Recipes = () => {
   const { getRecipeDetails } = useGetRecipeDetails()
   const { transferCoins } = useCoinTransfer()
   const token = localStorage.getItem('accessToken')
+  const { user } = useAuth()
 
   const handleViewRecipeDetails = async (recipeId) => {
-    const recipeDetails = await getRecipeDetails(recipeId); 
+    if (!user) {
+      toast.error('Please sign in to view recipe details')
+      navigate('/signin')
+      return
+    }
+
+    const recipeDetails = await getRecipeDetails(recipeId)
     try {
       if (!recipeDetails?.purchased) {
-       
         confirmAction({
           message: 'Not authorized. Spend 10 coins to view?',
           onConfirm: async () => {
-            const purchase = await transferCoins(recipeId);
-            console.log(purchase);
-  
-            if (purchase) {
-              mutate([`${import.meta.env.VITE_API_URL}/coins`, token]); 
+            const purchase = await transferCoins(recipeId)
+            console.log(purchase)
 
-              navigate(`/recipe/${recipeId}`);
+            if (purchase) {
+              mutate([`${import.meta.env.VITE_API_URL}/coins`, token])
+
+              navigate(`/recipe/${recipeId}`)
             } else {
-              return; 
+              return
             }
           },
           onCancel: () => {
-            console.log('Cancelled NO');
+            console.log('Cancelled NO')
           },
-        });
-        return; // Return early if recipe not purchased
+        })
+        return
       }
-  
-      navigate(`/recipe/${recipeId}`); // Navigate to recipe if already purchased
+
+      navigate(`/recipe/${recipeId}`)
     } catch (error) {
-      handleError(error);
+      handleError(error)
     }
-  };
-  
+  }
 
   return (
     <div className="container grid min-h-screen grid-cols-1 items-center justify-items-center gap-10 md:grid-cols-2 lg:grid-cols-3">
