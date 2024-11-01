@@ -12,9 +12,7 @@ export const getPlainText = (content) => {
 }
 
 const blogContent = [
-  '<h2>Welcome to Our Blog!</h2>',
-  '<p>This is a <strong>great</strong> article.</p>',
-  '<i>We hope you enjoy it!</i>',
+  '<p>Hello</p><h1>My name is Rakib</h1><p>Test</p><p>Test</p><p>TesYEWWWWWWWWWWWWWWWWWWWWWWWWW</br>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWKKKKKKKKKKKKKKKKKbbbbbbbbbbbbhhhhhhhhhhhhhfffffffffffffffffffffffffffffWWWWWWWWWWWWWt</p>',
 ]
 
 const plainTextPreview = getPlainText(blogContent)
