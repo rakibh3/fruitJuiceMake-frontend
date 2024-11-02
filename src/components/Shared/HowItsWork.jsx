@@ -31,7 +31,7 @@ const howItWorksData = [
 
 const HowItsWork = () => {
   return (
-    <section className="container space-y-8 pt-20">
+    <section className="container mt-16 space-y-8">
       <div>
         <h2 className="mb-3 text-center text-2xl font-bold md:text-3xl">
           How It Works
