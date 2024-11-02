@@ -10,19 +10,24 @@ const Home = () => {
       <Hero />
       <Category />
 
-      <>
-        <h1 className="container text-left text-2xl font-bold uppercase">
-          Latest Recipes
-        </h1>
-        <div className="mb -mt-14">
+      <div>
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+          Discover Fresh Flavors
+        </h2>
+        <p className="container text-center text-xl font-normal tracking-wider text-slate-500">
+          Hear from fellow juice enthusiasts about their refreshing experiences
+          with Juice Haven. Your next juicy story could be here!
+        </p>
+        <div className="-mt-12">
           <Recipes limit={6} />
         </div>
-      </>
-      <div className="container mt-16">
-        <h2 className="mb-4 text-center text-2xl font-bold uppercase tracking-wider">
+      </div>
+
+      <div className="container mt-24">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
           What Our Juice Lovers Are Saying
         </h2>
-        <p className="text-md mb-10 text-center font-normal tracking-wider text-slate-500">
+        <p className="mb-10 text-center text-xl font-normal tracking-wider text-slate-500">
           Hear from fellow juice enthusiasts about their refreshing experiences
           with Juice Haven. Your next juicy story could be here!
         </p>

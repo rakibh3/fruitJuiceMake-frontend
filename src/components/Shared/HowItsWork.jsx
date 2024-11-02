@@ -31,12 +31,23 @@ const howItWorksData = [
 
 const HowItsWork = () => {
   return (
-    <section className="container mt-16 space-y-8">
+    // <div className="container mt-24">
+    //     <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+    //       What Our Juice Lovers Are Saying
+    //     </h2>
+    //     <p className="mb-10 text-center text-xl font-normal tracking-wider text-slate-500">
+    //       Hear from fellow juice enthusiasts about their refreshing experiences
+    //       with Juice Haven. Your next juicy story could be here!
+    //     </p>
+    //     <ReviewSlider />
+    //   </div>
+
+    <section className="container mt-24 space-y-8">
       <div>
-        <h2 className="mb-3 text-center text-2xl font-bold md:text-3xl">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
           How It Works
         </h2>
-        <p className="px-20 pb-2 text-center text-sm leading-normal text-slate-500 sm:text-base">
+        <p className="mb-2 text-center text-xl font-normal tracking-wider text-slate-500">
           Discover how our Recipe Sharing system connects food lovers, making it
           easy and fun to explore, share, and enjoy culinary creations together!
         </p>
