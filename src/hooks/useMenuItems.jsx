@@ -8,10 +8,12 @@ const useMenuItems = () => {
         { name: 'Home', link: '/' },
         { name: 'Recipes', link: '/recipes' },
         { name: 'Add-Recipes', link: '/add-recipes' },
+        { name: 'About Us', link: '/about-us' },
       ]
     : [
         { name: 'Home', link: '/' },
         { name: 'Recipes', link: '/recipes' },
+        { name: 'About Us', link: '/about-us' },
       ]
 
   return menuItems
