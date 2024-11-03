@@ -3,6 +3,7 @@ import Hero from '@/components/Hero/Hero'
 import Recipes from '../Recipe/Recipes'
 import HowItsWork from '@/components/Shared/HowItsWork'
 import ReviewSlider from '@/components/Shared/ReviewSlider'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -20,6 +21,11 @@ const Home = () => {
         </p>
         <div className="-mt-12">
           <Recipes limit={6} />
+          <div className="flex justify-center pt-12">
+            <button className="rounded-md bg-primary/90 px-3 py-2 text-center font-medium text-white shadow-2xl">
+              <Link to="/recipes">Explore All Recipes</Link>
+            </button>
+          </div>
         </div>
       </div>
 

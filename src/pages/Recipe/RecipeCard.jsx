@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react'
 import love from '@/assets/images/love.svg'
 import headphone from '@/assets/images/headphone.jpg'
-import star from '@/assets/images/star.svg'
-import halfStar from '@/assets/images/star-half-fill.svg'
-import emptyStar from '@/assets/images/star-no-fill.svg'
 import PageLoader from '@/components/PageLoader/PageLoader'
+import { HiStar } from 'react-icons/hi2'
 
 const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
   const [loading, setLoading] = useState(true)
@@ -32,28 +30,37 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
 
             {/* Title */}
             <div className="product-title">
-              <h3>{recipe?.title}</h3>
+              <h3>
+                {recipe.title.length > 25
+                  ? recipe.title.slice(0, 25) + '...'
+                  : recipe.title}
+              </h3>
             </div>
 
             {/* Products Price */}
             <div>
               <span className="text-xl font-bold">Rs 300.00</span>
               <div className="mt-1 flex items-center gap-2">
-                <span className="text-sm line-through opacity-50">
-                  Rs 500.00
+                <span className="text-sm font-medium opacity-50">
+                  Total Calories:
                 </span>
-                <span className="discount-percent"> Save 20%</span>
+                <span className="discount-percent">80</span>
               </div>
             </div>
 
             {/* Product Rating */}
             <span className="mt-1 flex items-center">
-              <img src={star} alt="" />
-              <img src={star} alt="" />
-              <img src={star} alt="" />
-              <img src={halfStar} alt="" />
-              <img src={emptyStar} alt="" />
-              <span className="ml-2 text-xs text-gray-500">20k+ Reviews</span>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <HiStar
+                  key={i}
+                  // key={`${review.id}-${i}`}
+                  className={`size-6 ${
+                    // review.rating > i ? 'text-yellow-400' : 'text-gray-300'
+                    4 > i ? 'text-yellow-400' : 'text-gray-300'
+                  }`}
+                />
+              ))}
+              {/* <span className="ml-2 text-xs text-gray-500">20k+ Reviews</span> */}
             </span>
 
             {/* Action Button */}

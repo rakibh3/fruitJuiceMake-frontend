@@ -59,19 +59,11 @@ const Recipes = ({ limit }) => {
   const limitedRecipes = limit ? recipes.slice(0, limit) : recipes
 
   return (
-    <div className="container grid grid-cols-1 items-center justify-items-center gap-8 pt-24 md:grid-cols-2 lg:grid-cols-3">
+    <div className="container grid grid-cols-1 items-center justify-items-center gap-8 pt-24 md:grid-cols-2 md:gap-16 lg:grid-cols-3">
       <RecipeCard
         recipes={limitedRecipes}
         handleViewRecipeDetails={handleViewRecipeDetails}
       />
-      {/* <RecipeCard
-        recipes={limitedRecipes}
-        handleViewRecipeDetails={handleViewRecipeDetails}
-      />
-      <RecipeCard
-        recipes={limitedRecipes}
-        handleViewRecipeDetails={handleViewRecipeDetails}
-      /> */}
     </div>
   )
 }
