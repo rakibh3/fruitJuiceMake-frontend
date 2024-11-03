@@ -51,7 +51,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/add-recipes',
-        element: <AddRecipe />,
+        element: (
+          <PrivateRoute>
+            <AddRecipe />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/about-us',

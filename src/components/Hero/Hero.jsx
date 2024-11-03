@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import HeroPng from '@/assets/fruit-plate.png'
 import LeafPng from '@/assets/leaf.png'
 import { FadeRight } from '@/utils/animatio'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -46,18 +47,24 @@ const Hero = () => {
               animate="visible"
               className="flex justify-center gap-10 md:justify-start"
             >
-              <button className="primary-btn up flex items-center gap-2">
+              <Link
+                to="/recipes"
+                className="primary-btn up flex items-center gap-2"
+              >
                 <span>
-                  <Eye></Eye>
+                  <Eye />
                 </span>
                 See Recipes
-              </button>
-              <button className="primary-btn flex items-center gap-2">
+              </Link>
+              <Link
+                to="/add-recipes"
+                className="primary-btn flex items-center gap-2"
+              >
                 <span>
                   <BadgePlus />
                 </span>
                 Add Recipe
-              </button>
+              </Link>
             </motion.div>
           </div>
         </div>
