@@ -17,6 +17,8 @@ const reviews = [
     user: {
       profile: {
         name: 'John Doe',
+        profilePhoto:
+          'https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     },
   },
@@ -29,6 +31,7 @@ const reviews = [
     user: {
       profile: {
         name: 'Jane Smith',
+        profilePhoto: '',
       },
     },
   },
@@ -41,6 +44,8 @@ const reviews = [
     user: {
       profile: {
         name: 'Emily Clark',
+        profilePhoto:
+          'https://plus.unsplash.com/premium_photo-1690407617686-d449aa2aad3c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     },
   },
@@ -53,6 +58,8 @@ const reviews = [
     user: {
       profile: {
         name: 'Mike Johnson',
+        profilePhoto:
+          'https://plus.unsplash.com/premium_photo-1689629870780-5d0e655383e6?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     },
   },
@@ -65,6 +72,8 @@ const reviews = [
     user: {
       profile: {
         name: 'Sarah Lee',
+        profilePhoto:
+          'https://plus.unsplash.com/premium_photo-1688350808212-4e6908a03925?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     },
   },
@@ -72,62 +81,68 @@ const reviews = [
     id: '6',
     content:
       'Decent juice, but it could use more natural sweetness. I found it a bit bland compared to others I’ve tried. It’s still refreshing, though, and good for those who don’t like overly sweet drinks. A solid option overall.',
-    rating: 3,
+    rating: 4,
     createdAt: new Date(),
     user: {
       profile: {
         name: 'Chris Evans',
+        profilePhoto:
+          'https://images.unsplash.com/photo-1602471615287-d733c59b79c4?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       },
     },
   },
-  {
-    id: '7',
-    content:
-      'My go-to juice now! Love the freshness and taste, and I can tell it’s made with quality ingredients. It has become a regular in my grocery list. Perfect for a quick, healthy refreshment. Highly recommended!',
-    rating: 5,
-    createdAt: new Date(),
-    user: {
-      profile: {
-        name: 'Laura Perez',
-      },
-    },
-  },
-  {
-    id: '8',
-    content:
-      'Good juice, but I prefer it with less pulp. The flavor is great, and it’s very refreshing, but I’m not a big fan of pulp. Maybe an option for pulp-free would be nice. But it’s an excellent drink!',
-    rating: 4,
-    createdAt: new Date(),
-    user: {
-      profile: {
-        name: 'Tom Harris',
-      },
-    },
-  },
-  {
-    id: '9',
-    content:
-      'A bit pricey, but the quality is worth it! You can taste the freshness in each sip, and the packaging is also top-quality. It’s definitely a treat, but I don’t mind spending a little more for something this good.',
-    rating: 4,
-    createdAt: new Date(),
-    user: {
-      profile: {
-        name: 'Jessica Brown',
-      },
-    },
-  },
-  {
-    id: '10',
-    content:
-      'Refreshing and delicious! I was surprised by how vibrant the flavors are. You can tell a lot of care goes into the making of this juice. Will definitely buy again and try some other flavors. Fantastic for a mid-day boost!',
-    rating: 5,
-    createdAt: new Date(),
-    user: {
-      profile: {
-        name: 'David Wilson',
-      },
-    },
-  },
+  //   {
+  //     id: '7',
+  //     content:
+  //       'My go-to juice now! Love the freshness and taste, and I can tell it’s made with quality ingredients. It has become a regular in my grocery list. Perfect for a quick, healthy refreshment. Highly recommended!',
+  //     rating: 5,
+  //     createdAt: new Date(),
+  //     user: {
+  //       profile: {
+  //         name: 'Laura Perez',
+  //         profilePhoto: 'https://source.unsplash.com/random/200x200?person,7', // Unsplash image
+  //       },
+  //     },
+  //   },
+  //   {
+  //     id: '8',
+  //     content:
+  //       'Good juice, but I prefer it with less pulp. The flavor is great, and it’s very refreshing, but I’m not a big fan of pulp. Maybe an option for pulp-free would be nice. But it’s an excellent drink!',
+  //     rating: 4,
+  //     createdAt: new Date(),
+  //     user: {
+  //       profile: {
+  //         name: 'Tom Harris',
+  //         profilePhoto: 'https://source.unsplash.com/random/200x200?person,8', // Unsplash image
+  //       },
+  //     },
+  //   },
+  //   {
+  //     id: '9',
+  //     content:
+  //       'A bit pricey, but the quality is worth it! You can taste the freshness in each sip, and the packaging is also top-quality. It’s definitely a treat, but I don’t mind spending a little more for something this good.',
+  //     rating: 4,
+  //     createdAt: new Date(),
+  //     user: {
+  //       profile: {
+  //         name: 'Jessica Brown',
+  //         profilePhoto: 'https://source.unsplash.com/random/200x200?person,9', // Unsplash image
+  //       },
+  //     },
+  //   },
+  //   {
+  //     id: '10',
+  //     content:
+  //       'Refreshing and delicious! I was surprised by how vibrant the flavors are. You can tell a lot of care goes into the making of this juice. Will definitely buy again and try some other flavors. Fantastic for a mid-day boost!',
+  //     rating: 5,
+  //     createdAt: new Date(),
+  //     user: {
+  //       profile: {
+  //         name: 'David Wilson',
+  //         profilePhoto: 'https://source.unsplash.com/random/200x200?person,10', // Unsplash image
+  //       },
+  //     },
+  //   },
 ]
 
 const ReviewSlider = () => {
@@ -177,7 +192,7 @@ const ReviewSlider = () => {
                   src={review.user.profile.profilePhoto || avatar}
                   height={160}
                   width={160}
-                  className="size-12 rounded-md object-cover"
+                  className="size-16 rounded-md object-cover"
                   alt="User photo"
                 />
               </div>
@@ -185,7 +200,7 @@ const ReviewSlider = () => {
                 {Array.from({ length: 5 }).map((_, i) => (
                   <HiStar
                     key={`${review.id}-${i}`}
-                    className={`size-4 ${
+                    className={`size-6 ${
                       review.rating > i ? 'text-yellow-400' : 'text-gray-300'
                     }`}
                   />

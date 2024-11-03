@@ -9,6 +9,7 @@ import AddRecipe from '@/pages/Recipe/AddRecipe'
 import RecipeDetails from '@/pages/Recipe/RecipeDetails'
 import { recipeLoader } from '@/loaders/recipeLoader'
 import Recipes from '@/pages/Recipe/Recipes'
+import AboutUs from '@/pages/AboutUs/AboutUs'
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: '/add-recipes',
         element: <AddRecipe />,
+      },
+      {
+        path: '/about-us',
+        element: <AboutUs />,
       },
     ],
   },
