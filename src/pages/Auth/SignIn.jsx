@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import useAuth from '@/hooks/useAuth'
 import { usersLoginApi } from '@/api/authApi'
+import DemoCredentials from '@/components/Shared/DemoCredentials'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -15,6 +16,7 @@ const SignIn = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setValue,
     reset,
   } = useForm()
 
@@ -57,6 +59,11 @@ const SignIn = () => {
     [signInWithCredential, navigate, reset],
   )
 
+  const setDemoCredentials = ({ email, password }) => {
+    setValue('email', email)
+    setValue('password', password)
+  }
+
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
       <div className="flex w-full flex-1 flex-col items-center justify-center text-center">
@@ -65,9 +72,15 @@ const SignIn = () => {
           <div className="w-full p-5 md:w-3/5">
             <div className="py-10">
               <h2 className="mb-1 text-2xl font-bold tracking-wide text-primary/80 sm:text-3xl">
-                Hi, Welcome Back!
+                Sign In
               </h2>
-              <div className="mb-3 inline-block w-10 border-2 border-primary/80"></div>
+              <div className="mb-3 inline-block w-10 border-2 border-primary/80" />
+
+              {/* Demo Credentials */}
+              <div className="mb-3">
+                <p className="mb-2 text-sm font-semibold">Demo Account</p>
+                <DemoCredentials setDemoCredentials={setDemoCredentials} />
+              </div>
               {/* Sign In form */}
               <div className="flex flex-col items-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -125,6 +138,7 @@ const SignIn = () => {
                     Sign in
                   </button>
                 </form>
+
                 <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-600">
                   Don&apos;t have an account?
                   <Link
