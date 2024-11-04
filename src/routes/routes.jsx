@@ -10,6 +10,7 @@ import RecipeDetails from '@/pages/Recipe/RecipeDetails'
 import { recipeLoader } from '@/loaders/recipeLoader'
 import Recipes from '@/pages/Recipe/Recipes'
 import AboutUs from '@/pages/AboutUs/AboutUs'
+import ContactUs from '@/pages/ContactUs/ContactUs'
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
       {
         path: '/about-us',
         element: <AboutUs />,
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs />,
       },
     ],
   },
