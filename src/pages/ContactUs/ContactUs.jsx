@@ -12,10 +12,12 @@ const ContactUs = () => {
         <h2 className="mb-4 text-center text-2xl font-bold uppercase tracking-wide">
           Contact
         </h2>
-        <p className="mb-2 px-1 text-center text-base font-normal text-slate-500">
+        <p className="mb-2 px-2 text-center text-base font-normal text-slate-500">
           If you have any inquiries or require assistance, we are here to
-          support you. Please complete the form below, or feel free to reach out
-          to us directly
+          support you.
+          <br />
+          Please complete the form below, or feel free to reach out to us
+          directly
         </p>
       </div>
 
