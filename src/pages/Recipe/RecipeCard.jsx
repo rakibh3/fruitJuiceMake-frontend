@@ -23,23 +23,31 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
 
           <div className="flex flex-col gap-3 p-5">
             {/* Badge */}
-            <div className="flex items-center gap-2">
-              <span className="badge">Stock Ready</span>
-              <span className="badge">Official Store</span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="rounded-r-full bg-gray-200 px-3 py-1 text-xs">
+                Md Rakibul Hasan
+              </span>
+              <span className="rounded-l-full bg-gray-200 px-3 py-1 text-xs">
+                100 Views
+              </span>
             </div>
 
             {/* Title */}
             <div className="product-title">
               <h3>
-                {recipe.title.length > 25
+                {/* {recipe.title.length > 25
                   ? recipe.title.slice(0, 25) + '...'
-                  : recipe.title}
+                  : recipe.title} */}
+                Time flies when you&apos;re
               </h3>
             </div>
 
-            {/* Products Price */}
+            {/* Recipe Details */}
             <div>
-              <span className="text-xl font-bold">Rs 300.00</span>
+              <p className="mb-3 text-left text-sm">
+                90 Underneath the starry sky, we shared our dreams and laughter,
+                creating memories to cherish forever.
+              </p>
               <div className="mt-1 flex items-center gap-2">
                 <span className="text-sm font-medium opacity-50">
                   Total Calories:
@@ -48,7 +56,7 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
               </div>
             </div>
 
-            {/* Product Rating */}
+            {/* Rating */}
             <span className="mt-1 flex items-center">
               {Array.from({ length: 5 }).map((_, i) => (
                 <HiStar
