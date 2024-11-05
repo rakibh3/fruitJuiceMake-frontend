@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom'
-import Navbar from '@/components/Shared/Navbar'
 import Footer from '@/components/Shared/Footer'
+import Navbar from '@/components/Shared/Navbar'
 
-function App() {
+const MainLayout = () => {
   return (
     <>
       <main className="overflow-x-hidden bg-[#F1F5F9]">
@@ -13,5 +13,4 @@ function App() {
     </>
   )
 }
-
-export default App
+export default MainLayout

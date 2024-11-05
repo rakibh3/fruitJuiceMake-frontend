@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import App from '@/App'
+import MainLayout from '@/layout/MainLayout'
 import PrivateRoute from '@/routes/PrivateRoute'
 import PublicRoute from '@/routes/PublicRoute'
 import Home from '@/pages/Home/Home'
@@ -15,7 +15,7 @@ import ContactUs from '@/pages/ContactUs/ContactUs'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <MainLayout />,
     children: [
       {
         index: true,
