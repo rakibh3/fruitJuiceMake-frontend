@@ -1,5 +1,5 @@
 import ImageSlider from '@/components/Shared/ImageSlider'
-import Avatar from '@/assets/avatar/avatar.jpeg'
+// import Avatar from '@/assets/avatar/avatar.jpeg'
 import { IoEyeOutline } from 'react-icons/io5'
 import { TbCategory } from 'react-icons/tb'
 import { FaRegCircleUser } from 'react-icons/fa6'
@@ -15,12 +15,12 @@ const RecipeDetails = () => {
         <div className="my-2 grow">
           <div className="rounded-xl bg-white p-3">
             {/* Recipe Creator Profile And Time */}
-            <div className="my-2 flex w-full flex-row gap-2 space-y-3 sm:w-auto">
+            {/* <div className="my-2 flex w-full flex-row gap-2 space-y-3 sm:w-auto">
               <div className="flex items-center">
                 <img
                   className="mr-1 mt-[10px] h-12 w-12 rounded-full"
                   src={Avatar}
-                  alt="Memento of Barca"
+                  alt="avatar"
                 />
               </div>
               <div className="flex flex-col justify-start">
@@ -29,10 +29,10 @@ const RecipeDetails = () => {
                   18 hours ago
                 </p>
               </div>
-            </div>
+            </div> */}
 
             <div>
-              <h1 className="my-6 text-center text-2xl font-semibold uppercase">
+              <h1 className="my-6 text-center text-4xl font-bold capitalize">
                 {recipe?.title}
               </h1>
 
@@ -69,10 +69,14 @@ const RecipeDetails = () => {
                   </p>
                 </div>
               </div>
-
-              <p className="mt-1 text-sm leading-normal text-slate-700">
-                {recipe?.description}
-              </p>
+            </div>
+            <div>
+              {recipe?.description && (
+                <article
+                  className="prose lg:prose-xl w-full max-w-none"
+                  dangerouslySetInnerHTML={{ __html: recipe?.description }}
+                />
+              )}
             </div>
           </div>
 

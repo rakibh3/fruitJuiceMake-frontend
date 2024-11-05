@@ -36,7 +36,7 @@ const AddRecipe = () => {
         </h2>
         <div className="mt-6 grid gap-2 rounded-lg bg-white p-6 shadow-md">
           <div className="mb-2 grid grid-cols-1 gap-10 md:grid-cols-2">
-            {/* Recipe Name */}
+            {/* Recipe Title */}
             <div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
@@ -49,7 +49,7 @@ const AddRecipe = () => {
                 </div>
                 <input
                   type="text"
-                  {...register('recipeTitle', {
+                  {...register('title', {
                     required: true,
                     maxLength: 25,
                   })}
@@ -183,7 +183,7 @@ const AddRecipe = () => {
                 Recipe Details<span className="text-red-400">*</span>
               </label>
               <Controller
-                name="recipeDetails"
+                name="description"
                 placeholder="Enter recipe details"
                 control={control}
                 render={({ field: { onChange, value } }) => (

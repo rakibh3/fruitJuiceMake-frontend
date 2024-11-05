@@ -17,10 +17,6 @@
     @apply overflow-hidden overflow-ellipsis whitespace-nowrap text-2xl font-semibold;
   }
 
-  .discount-percent {
-    @apply rounded-md bg-green-400 px-2 py-0.5 text-xs font-semibold text-gray-600;
-  }
-
   .card-btn {
     @apply rounded-md bg-primary/80 px-6 py-2 text-center font-medium tracking-wider text-white transition hover:bg-primary/90;
   }

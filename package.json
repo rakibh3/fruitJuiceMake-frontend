@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
     "firebase": "^10.13.2",

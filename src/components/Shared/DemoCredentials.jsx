@@ -1,7 +1,11 @@
 const DemoCredentials = ({ setDemoCredentials }) => {
   const demoCredentials = [
-    { email: 'test08@gmail.com', password: '11111111' },
-    // { email: 'test02@gmail.com', password: '22222222' },
+    // { email: 'hasan@juicer.com', password: 'Hasan@juicer00' },
+    { email: 'john@juicer.com', password: 'John@juicer01' },
+    // { email: 'alice@juicer.com', password: 'Alice@juicer02' },
+    // { email: 'bob@juicer.com', password: 'Bob@juicer03' },
+    // { email: 'eve@juicer.com', password: 'Eve@juicer04' },
+    // { email: 'mike@juicer.com', password: 'Mike@juicer05' },
   ]
 
   return (

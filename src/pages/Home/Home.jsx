@@ -12,10 +12,10 @@ const Home = () => {
       <Category />
 
       <div>
-        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wide">
           Discover Fresh Flavors
         </h2>
-        <p className="container text-center text-xl font-normal tracking-wider text-slate-500">
+        <p className="container text-center text-xl font-normal tracking-wide text-slate-500">
           Hear from fellow juice enthusiasts about their refreshing experiences
           with Juice Haven. Your next juicy story could be here!
         </p>
@@ -30,10 +30,10 @@ const Home = () => {
       </div>
 
       <div className="container mt-24">
-        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wide">
           What Our Juice Lovers Are Saying
         </h2>
-        <p className="mb-10 text-center text-xl font-normal tracking-wider text-slate-500">
+        <p className="mb-10 text-center text-xl font-normal tracking-wide text-slate-500">
           Hear from fellow juice enthusiasts about their refreshing experiences
           with Juice Haven. Your next juicy story could be here!
         </p>
