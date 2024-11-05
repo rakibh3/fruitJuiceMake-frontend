@@ -1,11 +1,17 @@
 import toast from 'react-hot-toast'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import avatar from "@/assets/avatar/avatar.jpeg"
+import avatar from '@/assets/avatar/avatar.jpeg'
 import useAuth from '@/hooks/useAuth'
 import Coin from '@/components/Shared/Coin'
 
 const UserProfile = ({ user }) => {
+  const dashboardOption = [
+    { label: 'Dashboard', link: '/dashboard' },
+    { label: 'Profile', link: '/dashboard/profile' },
+    { label: 'Setting', link: '/dashboard/settings' },
+  ]
+
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
   const { logout } = useAuth()
@@ -75,14 +81,10 @@ const UserProfile = ({ user }) => {
 
         {/* User Profile Options */}
         <div className="py-1">
-          {[
-            { label: 'Dashboard', link: '/dashboard' },
-            { label: 'Profile', link: '/profile' },
-            { label: 'Setting', link: '/setting' },
-          ].map((item) => (
+          {dashboardOption?.map((item) => (
             <Link
               key={item.label}
-              href={item.link}
+              to={item.link}
               className="block px-4 py-2 text-sm text-gray-700"
             >
               {item.label}
