@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import usePublicAxios from './useAxiosPublic'
 
-const useRecipes = () => {
+const useRecipes = (category) => {
   const publicAxios = usePublicAxios()
   const [recipes, setRecipes] = useState([])
 
@@ -10,7 +10,7 @@ const useRecipes = () => {
     let isMounted = true
 
     const fetchRecipes = async () => {
-      const recipesData = await getRecipes(publicAxios)
+      const recipesData = await getRecipes(publicAxios, category)
       if (isMounted) {
         setRecipes(recipesData)
       }
@@ -21,14 +21,16 @@ const useRecipes = () => {
     return () => {
       isMounted = false
     }
-  }, [publicAxios])
+  }, [publicAxios, category])
 
   return { recipes }
 }
 
-const getRecipes = async (publicAxios) => {
+const getRecipes = async (publicAxios, category) => {
   try {
-    const response = await publicAxios.get('/recipes')
+    const response = await publicAxios.get('/recipes', {
+      params: { category },
+    })
     return response?.data?.data
   } catch (error) {
     const errorMessage =

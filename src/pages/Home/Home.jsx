@@ -4,12 +4,19 @@ import Recipes from '../Recipe/Recipes'
 import HowItsWork from '@/components/Shared/HowItsWork'
 import ReviewSlider from '@/components/Shared/ReviewSlider'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 const Home = () => {
+  const [selectedCategory, setSelectedCategory] = useState('')
+
+  const handleCategoryClick = async (categoryTitle) => {
+    setSelectedCategory(categoryTitle)
+  }
+
   return (
     <>
       <Hero />
-      <Category />
+      <Category onCategoryClick={handleCategoryClick} />
 
       <div>
         <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wide">
@@ -20,7 +27,7 @@ const Home = () => {
           with Juice Haven. Your next juicy story could be here!
         </p>
         <div className="-mt-12">
-          <Recipes limit={6} />
+          <Recipes limit={6} category={selectedCategory} />
           <div className="flex justify-center pt-12">
             <button className="rounded-md bg-primary/90 px-3 py-2 text-center font-medium text-white shadow-2xl">
               <Link to="/recipes">Explore All Recipes</Link>

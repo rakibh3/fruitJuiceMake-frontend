@@ -28,7 +28,7 @@ const CategorysData = [
   },
 ]
 
-const Category = () => {
+const Category = ({ onCategoryClick }) => {
   return (
     <section>
       <div className="container pb-20 pt-12">
@@ -49,6 +49,7 @@ const Category = () => {
               whileHover={{ scale: 1.1 }}
               key={category.id}
               className="flex flex-row items-center justify-around gap-3 rounded-3xl bg-white px-4 py-2 shadow-[0_0_22px_0_rgba(0,0,0,0.15)]"
+              onClick={() => onCategoryClick(category.title)}
             >
               <div>
                 <img

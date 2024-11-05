@@ -11,8 +11,8 @@ import useAuth from '@/hooks/useAuth'
 import toast from 'react-hot-toast'
 // import useCoins from '@/hooks/useCoins'
 
-const Recipes = ({ limit }) => {
-  const { recipes } = useRecipes()
+const Recipes = ({ limit, category }) => {
+  const { recipes } = useRecipes(category)
   const navigate = useNavigate()
   const { getRecipeDetails } = useGetRecipeDetails()
   const { transferCoins } = useCoinTransfer()
