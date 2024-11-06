@@ -5,17 +5,18 @@ import { useNavigate } from 'react-router-dom'
 import { handleError } from '@/error/errorHandler'
 import { useRecipeDetails } from '@/hooks/useRecipeDetails'
 import { confirmAction } from '@/components/Shared/confirmAction'
-import { useTransferCoins } from '@/hooks/useTransferCoins'
 import { mutate } from 'swr'
 import useAuthentication from '@/hooks/useAuthentication'
 import toast from 'react-hot-toast'
+import { useCoinTransfer } from '@/hooks/useCoinTransfer'
+
 // import useCoinBalance from '@/hooks/useCoinBalance'
 
 const Recipes = ({ limit, category }) => {
   const { recipes } = useRecipeList(category)
   const navigate = useNavigate()
   const { getRecipeDetails } = useRecipeDetails()
-  const { transferCoins } = useTransferCoins()
+  const { transferCoins } = useCoinTransfer()
   const token = localStorage.getItem('accessToken')
   const { user } = useAuthentication()
 

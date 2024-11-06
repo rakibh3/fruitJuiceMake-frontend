@@ -1,11 +1,14 @@
-import { BarChart2, ShoppingBag, Users, Zap } from 'lucide-react'
+import { BarChart2, ShoppingBag, Coins, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Header from '@/components/Dashboard/Shared/Header'
 import Stats from '@/components/Dashboard/Shared/Stats'
 import SalesOverviewChart from '@/components/Dashboard/Overview/SalesOverviewChart'
 import CategoryChart from '@/components/Dashboard/Overview/CategoryChart'
+import useRecipesHistory from '@/hooks/useRecipesHistory'
 
 const Overview = () => {
+  const { data } = useRecipesHistory()
+
   return (
     <div className="relative z-10 flex-1 overflow-auto">
       <Header />
@@ -19,22 +22,27 @@ const Overview = () => {
           transition={{ duration: 1 }}
         >
           <Stats
-            name="Total Sales"
+            name="Sold Recipes"
             icon={Zap}
-            value="$12,345"
+            value={data?.soldRecipes.length}
             color="#6366F1"
           />
-          <Stats name="New Users" icon={Users} value="1,234" color="#8B5CF6" />
           <Stats
-            name="Total Products"
+            name="Coins Earned"
+            icon={Coins}
+            value={data?.coinEarned}
+            color="#8B5CF6"
+          />
+          <Stats
+            name="Total Recipes"
             icon={ShoppingBag}
-            value="567"
+            value={data?.recipeCreatedByUser.length}
             color="#EC4899"
           />
           <Stats
-            name="Conversion Rate"
+            name="Visitors Count"
             icon={BarChart2}
-            value="12.5%"
+            value={data?.viewCount}
             color="#10B981"
           />
         </motion.div>
@@ -43,7 +51,7 @@ const Overview = () => {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <SalesOverviewChart />
-          <CategoryChart />
+          <CategoryChart data={data} />
         </div>
       </main>
     </div>

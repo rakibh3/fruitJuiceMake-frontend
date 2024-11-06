@@ -2,7 +2,7 @@ import { useState } from 'react'
 import usePublicAxios from './usePublicAxios'
 import { handleError } from '@/error/errorHandler'
 
-export const useTransferCoins = () => {
+export const useCoinTransfer = () => {
   const [isLoading, setIsLoading] = useState(false)
   const publicAxios = usePublicAxios()
 
