@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import ResponsiveMenu from '@/components/Shared/ResponsiveMenu'
-import useMenuItems from '@/hooks/useMenuItems'
+import useMenuItemsList from '@/hooks/useMenuItemsList'
 import AuthAction from '@/components/AuthAction/AuthAction'
 import UserProfile from '@/components/UserProfile/UserProfile'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 
 const Navbar = () => {
-  const { user } = useAuth()
-  const NavbarMenu = useMenuItems()
+  const { user } = useAuthentication()
+  const NavbarMenu = useMenuItemsList()
   const [open, setOpen] = useState(false)
 
   return (

@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import useSecureAxios from './useAxiosSecure'
+import useSecureAxios from './useSecureAxios'
 import { handleError } from '@/error/errorHandler'
 
-export const useGetRecipeDetails = () => {
+export const useRecipeDetails = () => {
   const secureAxios = useSecureAxios()
   const [isLoading, setIsLoading] = useState(false)
 

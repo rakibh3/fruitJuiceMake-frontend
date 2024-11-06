@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
-import usePublicAxios from './useAxiosPublic'
+import usePublicAxios from './usePublicAxios'
 
-const useRecipes = (category) => {
+const useRecipeList = (category) => {
   const publicAxios = usePublicAxios()
   const [recipes, setRecipes] = useState([])
 
@@ -39,4 +39,4 @@ const getRecipes = async (publicAxios, category) => {
   }
 }
 
-export default useRecipes
+export default useRecipeList

@@ -4,13 +4,13 @@ import { TbPassword } from 'react-icons/tb'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 import { usersLoginApi } from '@/api/authApi'
 import DemoCredentials from '@/components/Shared/DemoCredentials'
 
 const SignIn = () => {
   const navigate = useNavigate()
-  const { signInWithCredential } = useAuth()
+  const { signInWithCredential } = useAuthentication()
 
   const {
     register,

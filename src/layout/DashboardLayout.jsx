@@ -1,4 +1,4 @@
-import Sidebar from '@/components/Shared/Sidebar'
+import Sidebar from '@/components/Dashboard/Shared/Sidebar'
 import { Outlet } from 'react-router-dom'
 
 const DashboardLayout = () => {
@@ -11,9 +11,8 @@ const DashboardLayout = () => {
 
       <Sidebar />
       {/* Outlet */}
-      <div className="flex-1">
-        <Outlet />
-      </div>
+
+      <Outlet />
     </div>
   )
 }

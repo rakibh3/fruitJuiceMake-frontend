@@ -3,7 +3,7 @@ import { TbPassword } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 import { usersRegisterApi } from '@/api/authApi'
 import { useCallback } from 'react'
 
@@ -14,7 +14,7 @@ const Signup = () => {
     updateUserProfile,
     deleteUserAccount,
     logout,
-  } = useAuth()
+  } = useAuthentication()
 
   const {
     register,

@@ -2,7 +2,7 @@ import toast from 'react-hot-toast'
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import avatar from '@/assets/avatar/avatar.jpeg'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 import Coin from '@/components/Shared/Coin'
 
 const UserProfile = ({ user }) => {
@@ -14,7 +14,7 @@ const UserProfile = ({ user }) => {
 
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
-  const { logout } = useAuth()
+  const { logout } = useAuthentication()
 
   // Toggle dropdown handler
   const handleToggle = () => {

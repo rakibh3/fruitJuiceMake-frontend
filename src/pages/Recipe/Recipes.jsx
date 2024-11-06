@@ -1,23 +1,23 @@
-import useRecipes from '@/hooks/useRecipes'
+import useRecipeList from '@/hooks/useRecipeList'
 import RecipeCard from './RecipeCard'
 import { useNavigate } from 'react-router-dom'
 // import { recipeLoader } from '@/loaders/useRecipeLoader'
 import { handleError } from '@/error/errorHandler'
-import { useGetRecipeDetails } from '@/hooks/useGetRecipeDetails'
+import { useRecipeDetails } from '@/hooks/useRecipeDetails'
 import { confirmAction } from '@/components/Shared/confirmAction'
-import { useCoinTransfer } from '@/hooks/useCoinTransfer'
+import { useTransferCoins } from '@/hooks/useTransferCoins'
 import { mutate } from 'swr'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 import toast from 'react-hot-toast'
-// import useCoins from '@/hooks/useCoins'
+// import useCoinBalance from '@/hooks/useCoinBalance'
 
 const Recipes = ({ limit, category }) => {
-  const { recipes } = useRecipes(category)
+  const { recipes } = useRecipeList(category)
   const navigate = useNavigate()
-  const { getRecipeDetails } = useGetRecipeDetails()
-  const { transferCoins } = useCoinTransfer()
+  const { getRecipeDetails } = useRecipeDetails()
+  const { transferCoins } = useTransferCoins()
   const token = localStorage.getItem('accessToken')
-  const { user } = useAuth()
+  const { user } = useAuthentication()
 
   const handleViewRecipeDetails = async (recipeId) => {
     try {

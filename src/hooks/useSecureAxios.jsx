@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 
 const secureAxios = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -9,7 +9,7 @@ const secureAxios = axios.create({
 
 const useSecureAxios = () => {
   const navigate = useNavigate()
-  const { logout } = useAuth()
+  const { logout } = useAuthentication()
 
   useEffect(() => {
     // Add a request interceptor to axiosSecure for secure API calls

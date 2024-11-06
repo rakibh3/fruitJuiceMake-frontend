@@ -1,7 +1,7 @@
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 
-const useMenuItems = () => {
-  const { user } = useAuth()
+const useMenuItemsList = () => {
+  const { user } = useAuthentication()
 
   const menuItems = user?.email
     ? [
@@ -21,4 +21,4 @@ const useMenuItems = () => {
   return menuItems
 }
 
-export default useMenuItems
+export default useMenuItemsList

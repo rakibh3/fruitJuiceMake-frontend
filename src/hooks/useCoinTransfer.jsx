@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import usePublicAxios from './useAxiosPublic'
+import usePublicAxios from './usePublicAxios'
 import { handleError } from '@/error/errorHandler'
 
-export const useCoinTransfer = () => {
+export const useTransferCoins = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const publicxios = usePublicAxios()
+  const publicAxios = usePublicAxios()
 
   const transferCoins = async (recipeId) => {
     setIsLoading(true)
     try {
       const token = localStorage.getItem('accessToken')
-      const response = await publicxios.post(
+      const response = await publicAxios.post(
         '/coin/transfer',
         { recipeId },
         {

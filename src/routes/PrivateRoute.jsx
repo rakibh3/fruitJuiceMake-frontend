@@ -1,9 +1,9 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 import PageLoader from '@/components/PageLoader/PageLoader'
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth()
+  const { user, loading } = useAuthentication()
   const location = useLocation()
 
   if (loading) return <PageLoader />

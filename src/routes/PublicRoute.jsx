@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom'
-import useAuth from '@/hooks/useAuth'
+import useAuthentication from '@/hooks/useAuthentication'
 
 const PublicRoute = ({ children }) => {
-  const { user } = useAuth()
+  const { user } = useAuthenticationentication()
 
   if (user) {
     return <Navigate to="/" replace />

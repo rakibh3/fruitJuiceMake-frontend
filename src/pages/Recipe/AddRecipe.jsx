@@ -1,18 +1,11 @@
 import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { CATEGORIES_OPTIONS } from '@/constant'
 import Editor from '@/components/Shared/Editor'
 import SubmitLoader from '@/components/PageLoader/SubmitLoader'
 import ImageUploader from '@/components/Shared/ImageUploader'
 
 const AddRecipe = () => {
-  const categories = [
-    { value: '', label: 'Select a Category' },
-    { value: 'apple', label: 'Apple' },
-    { value: 'oranges', label: 'Oranges' },
-    { value: 'avocado', label: 'Avocado' },
-    { value: 'cherries', label: 'Cherries' },
-  ]
-
   const [selectedFile, setSelectedFile] = useState(null)
 
   const {
@@ -77,7 +70,7 @@ const AddRecipe = () => {
                   {...register('category', { required: true })}
                   className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
                 >
-                  {categories.map((cat) => (
+                  {CATEGORIES_OPTIONS.map((cat) => (
                     <option key={cat.value} value={cat.value}>
                       {cat.label}
                     </option>
