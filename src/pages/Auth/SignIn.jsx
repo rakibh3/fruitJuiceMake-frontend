@@ -7,6 +7,7 @@ import useAuthentication from '@/hooks/useAuthentication'
 import { usersLoginApi } from '@/api/authApi'
 import DemoCredentials from '@/components/Shared/DemoCredentials'
 import PasswordInput from '@/components/Shared/PasswordInput'
+import SubmitLoader from '@/components/PageLoader/SubmitLoader'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -119,7 +120,7 @@ const SignIn = () => {
                     disabled={isSubmitting}
                     className="block w-full max-w-xs rounded-lg bg-primary/80 p-3 text-center font-semibold text-white hover:bg-primary/90"
                   >
-                    Sign in
+                    {isSubmitting ? <SubmitLoader /> : 'Sign In'}
                   </button>
                 </form>
 
