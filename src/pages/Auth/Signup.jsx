@@ -1,5 +1,4 @@
 import { FaRegEnvelope, FaRegUser } from 'react-icons/fa'
-import { TbPassword } from 'react-icons/tb'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,6 +6,7 @@ import useAuthentication from '@/hooks/useAuthentication'
 import { usersRegisterApi } from '@/api/authApi'
 import { useCallback } from 'react'
 import SubmitLoader from '@/components/PageLoader/SubmitLoader'
+import PasswordInput from '@/components/Shared/PasswordInput'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -153,24 +153,7 @@ const Signup = () => {
                   </div>
 
                   <div>
-                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
-                      <TbPassword className="m-2 text-gray-400" />
-                      <input
-                        type="password"
-                        {...register('password', {
-                          required: true,
-                          minLength: 8,
-                        })}
-                        placeholder="Password"
-                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
-                      />
-                    </div>
-
-                    {errors?.password && (
-                      <p className="mb-3 ml-1 mt-[-1.25rem] text-start text-xs text-red-500">
-                        Password is required and must be at least 8 characters
-                      </p>
-                    )}
+                    <PasswordInput register={register} errors={errors} />
                   </div>
 
                   <button
