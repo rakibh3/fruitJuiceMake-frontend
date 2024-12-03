@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { FaRegEnvelope } from 'react-icons/fa'
-import { TbPassword } from 'react-icons/tb'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
 import useAuthentication from '@/hooks/useAuthentication'
 import { usersLoginApi } from '@/api/authApi'
 import DemoCredentials from '@/components/Shared/DemoCredentials'
+import PasswordInput from '@/components/Shared/PasswordInput'
 
 const SignIn = () => {
   const navigate = useNavigate()
@@ -85,7 +85,7 @@ const SignIn = () => {
               <div className="flex flex-col items-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                    <div className="mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
                         type="text"
@@ -106,23 +106,7 @@ const SignIn = () => {
                   </div>
 
                   <div>
-                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
-                      <TbPassword className="m-2 text-gray-400" />
-                      <input
-                        type="password"
-                        {...register('password', {
-                          required: true,
-                          minLength: 8,
-                        })}
-                        placeholder="Password"
-                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
-                      />
-                    </div>
-                    {errors?.password && (
-                      <p className="mb-1 ml-1 mt-[-1.25rem] text-start text-xs text-red-500">
-                        Password is required and must be at least 8 character
-                      </p>
-                    )}
+                    <PasswordInput register={register} errors={errors} />
                     <p className="mb-5 flex w-full max-w-xs justify-end">
                       <Link to="#" className="text-xs">
                         Forgot Password?
