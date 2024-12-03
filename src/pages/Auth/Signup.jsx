@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import useAuthentication from '@/hooks/useAuthentication'
 import { usersRegisterApi } from '@/api/authApi'
 import { useCallback } from 'react'
+import SubmitLoader from '@/components/PageLoader/SubmitLoader'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -177,7 +178,7 @@ const Signup = () => {
                     disabled={isSubmitting}
                     className="block w-full max-w-xs rounded-lg bg-primary/80 p-3 text-center font-semibold text-white hover:bg-primary/90"
                   >
-                    Sign up
+                    {isSubmitting ? <SubmitLoader /> : 'Sign up'}
                   </button>
                 </form>
                 <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-600">
