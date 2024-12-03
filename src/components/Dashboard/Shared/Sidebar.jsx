@@ -1,6 +1,7 @@
 import {
   BarChart2,
   DollarSign,
+  House,
   Menu,
   Settings,
   ShoppingBag,
@@ -13,21 +14,22 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const SIDEBAR_ITEMS = [
+  { name: 'Home', icon: House, color: '#10B981', href: '/' },
   {
     name: 'Overview',
     icon: BarChart2,
     color: '#6366f1',
     href: '/dashboard',
   },
-  {
-    name: 'Recipes',
-    icon: ShoppingBag,
-    color: '#8B5CF6',
-    href: '/dashboard/recipes',
-  },
-  { name: 'Users', icon: Users, color: '#EC4899', href: '/users' },
-  { name: 'Sales', icon: DollarSign, color: '#10B981', href: '/sales' },
-  { name: 'Orders', icon: ShoppingCart, color: '#F59E0B', href: '/orders' },
+  // {
+  //   name: 'Recipes',
+  //   icon: ShoppingBag,
+  //   color: '#8B5CF6',
+  //   href: '/dashboard/recipes',
+  // },
+  // { name: 'Users', icon: Users, color: '#EC4899', href: '/users' },
+  // { name: 'Sales', icon: DollarSign, color: '#10B981', href: '/sales' },
+  // { name: 'Orders', icon: ShoppingCart, color: '#F59E0B', href: '/orders' },
   {
     name: 'Profile',
     icon: TrendingUp,
