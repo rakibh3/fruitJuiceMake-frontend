@@ -8,6 +8,7 @@ const useMenuItemsList = () => {
         { name: 'Home', link: '/' },
         { name: 'Recipes', link: '/recipes' },
         { name: 'Add-Recipes', link: '/add-recipes' },
+        { name: 'Buy Coins', link: '/buy-coins' },
         { name: 'About Us', link: '/about-us' },
         { name: 'Contact Us', link: '/contact-us' },
       ]

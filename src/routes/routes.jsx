@@ -12,6 +12,7 @@ import { recipeLoader } from '@/loaders/recipeLoader'
 import Recipes from '@/pages/Recipe/Recipes'
 import AboutUs from '@/pages/AboutUs/AboutUs'
 import ContactUs from '@/pages/ContactUs/ContactUs'
+import BuyCoins from '@/pages/BuyCoins/BuyCoins'
 import DashboardLayout from '@/layout/DashboardLayout'
 import Overview from '@/pages/Dashboard/Overview/Overview'
 import Profile from '@/pages/Dashboard/Profile/Profile'
@@ -71,6 +72,14 @@ export const router = createBrowserRouter([
       {
         path: '/contact-us',
         element: <ContactUs />,
+      },
+      {
+        path: '/buy-coins',
+        element: (
+          <PrivateRoute>
+            <BuyCoins />
+          </PrivateRoute>
+        ),
       },
     ],
   },
