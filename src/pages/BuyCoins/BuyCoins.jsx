@@ -1,5 +1,5 @@
-
 import useTheme from '@/hooks/useTheme';
+import toast from 'react-hot-toast';
 
 const BuyCoins = () => {
   const { theme } = useTheme();
@@ -38,7 +38,10 @@ const BuyCoins = () => {
               <p className="text-5xl font-bold text-green-600 mb-8">
                 ${option.price}
               </p>
-              <button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-12 py-4 rounded-full text-xl font-bold shadow-lg hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out">
+              <button
+                onClick={() => toast.success('Payment not yet implemented. Please check back soon!!!')}
+                className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-12 py-4 rounded-full text-xl font-bold shadow-lg hover:from-blue-600 hover:to-blue-800 transition duration-300 ease-in-out"
+              >
                 Buy Now
               </button>
             </div>
