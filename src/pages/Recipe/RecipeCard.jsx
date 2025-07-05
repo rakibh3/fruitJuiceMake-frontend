@@ -38,17 +38,17 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
             {/* Title */}
             <div className="product-title">
               <h3>
-                {recipe.title.length > 25
-                  ? recipe.title.slice(0, 25) + '...'
-                  : recipe.title}
+                {recipe?.title?.length > 25
+                  ? recipe?.title?.slice(0, 25) + '...'
+                  : recipe?.title}
               </h3>
             </div>
             {/* Recipe Details */}
             <div>
               <p className="mb-3 text-left text-sm">
-                {recipe.recipeSummary?.length > 90
-                  ? recipe.recipeSummary.slice(0, 90) + '...'
-                  : recipe.recipeSummary}
+                {recipe?.recipeSummary?.length > 90
+                  ? recipe?.recipeSummary?.slice(0, 90) + '...'
+                  : recipe?.recipeSummary}
               </p>
               <div className="mt-1 inline-flex items-center gap-4">
                 <p className="inline-flex gap-1 text-sm font-medium">

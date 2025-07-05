@@ -208,8 +208,8 @@ const ReviewSlider = () => {
               </div>
               <p className="text-sm leading-relaxed text-gray-600">
                 {review?.content.length > 190
-                  ? review.content.slice(0, 190) + '...'
-                  : review.content}
+                  ? review?.content?.slice(0, 190) + '...'
+                  : review?.content}
               </p>
               <div className="mx-auto h-px w-20 bg-gray-300"></div>
               <div className="space-y-0.5 text-center">
