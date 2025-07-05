@@ -17,7 +17,7 @@ const Hero = () => {
               variants={FadeRight(0.4)}
               initial="hidden"
               animate="visible"
-              className="font-averia text-5xl font-bold leading-relaxed lg:text-6xl xl:leading-loose"
+              className="font-averia text-5xl font-bold leading-relaxed lg:text-6xl xl:leading-loose dark:text-white"
             >
               Healthy
               <br />
@@ -27,7 +27,7 @@ const Hero = () => {
               variants={FadeRight(0.8)}
               initial="hidden"
               animate="visible"
-              className="text-2xl tracking-wide"
+              className="text-2xl tracking-wide dark:text-white"
             >
               Order Now For Fresh Healthy Life
             </motion.p>
@@ -35,7 +35,7 @@ const Hero = () => {
               variants={FadeRight(1.2)}
               initial="hidden"
               animate="visible"
-              className="text-gray-400"
+              className="text-gray-400 dark:text-gray-300"
             >
               Healthy and yummy food for fresh morning breakfast. Eat Daily for
               good health and mind Order now and get 20% off on your first order

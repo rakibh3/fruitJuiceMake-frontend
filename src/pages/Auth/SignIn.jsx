@@ -68,7 +68,7 @@ const SignIn = () => {
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
       <div className="flex w-full flex-1 flex-col items-center justify-center text-center">
-        <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row">
+        <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row dark:bg-gray-800">
           {/* Sign In */}
           <div className="w-full p-5 md:w-3/5">
             <div className="py-10">
@@ -79,14 +79,14 @@ const SignIn = () => {
 
               {/* Demo Credentials */}
               <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Demo Account</p>
+                <p className="mb-2 text-sm font-semibold dark:text-white">Demo Account</p>
                 <DemoCredentials setDemoCredentials={setDemoCredentials} />
               </div>
               {/* Sign In form */}
               <div className="flex flex-col items-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <div className="mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                    <div className="mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-700">
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
                         type="text"
@@ -96,7 +96,7 @@ const SignIn = () => {
                             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         })}
                         placeholder="Email"
-                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     {errors?.email && (
@@ -109,7 +109,7 @@ const SignIn = () => {
                   <div>
                     <PasswordInput register={register} errors={errors} />
                     <p className="mb-5 flex w-full max-w-xs justify-end">
-                      <Link to="#" className="text-xs">
+                      <Link to="#" className="text-xs dark:text-gray-300">
                         Forgot Password?
                       </Link>
                     </p>
@@ -124,7 +124,7 @@ const SignIn = () => {
                   </button>
                 </form>
 
-                <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-600">
+                <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-300">
                   Don&apos;t have an account?
                   <Link
                     rel="noopener noreferrer"

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import love from '@/assets/images/love.svg'
 import PageLoader from '@/components/PageLoader/PageLoader'
+import toast from 'react-hot-toast'
 // import { HiStar } from 'react-icons/hi2'
-import { IoEyeOutline } from 'react-icons/io5'
+import { IoEyeOutline, IoShareSocialOutline } from 'react-icons/io5'
 
 const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
   const [loading, setLoading] = useState(true)
@@ -18,7 +19,7 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
   return (
     <>
       {recipes?.map((recipe) => (
-        <div key={recipe._id} className="card">
+        <div key={recipe._id} className="card dark:bg-gray-700 dark:text-white">
           <img
             src={recipe.image}
             alt=""
@@ -28,10 +29,10 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
           <div className="flex flex-col gap-3 p-5">
             {/* Badge */}
             <div className="flex items-center justify-between gap-2">
-              <span className="rounded-r-full bg-gray-200 px-3 py-1 text-xs">
+              <span className="rounded-r-full bg-gray-200 px-3 py-1 text-xs dark:bg-gray-600 dark:text-gray-300">
                 {recipe?.category}
               </span>
-              <span className="flex items-center gap-1 rounded-l-full bg-gray-200 px-3 py-1 text-xs">
+              <span className="flex items-center gap-1 rounded-l-full bg-gray-200 px-3 py-1 text-xs dark:bg-gray-600 dark:text-gray-300">
                 <IoEyeOutline className="size-4" /> {recipe.view} Views
               </span>
             </div>
@@ -45,7 +46,7 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
             </div>
             {/* Recipe Details */}
             <div>
-              <p className="mb-3 text-left text-sm">
+              <p className="mb-3 text-left text-sm text-gray-600 dark:text-gray-400">
                 {recipe?.recipeSummary?.length > 90
                   ? recipe?.recipeSummary?.slice(0, 90) + '...'
                   : recipe?.recipeSummary}
@@ -94,8 +95,20 @@ const RecipeCard = ({ recipes, handleViewRecipeDetails }) => {
               </button>
 
               {/* Implement Fav */}
-              <button className="card-icon">
-                <img src={love} alt="" className="opacity-50" />
+              <button className="card-icon dark:bg-gray-600/95">
+                <img src={love} alt="" className="dark:invert" />
+              </button>
+              {/* Implement Share */}
+              <button
+                className="card-icon dark:bg-gray-600/95"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    `${window.location.origin}/recipe/${recipe._id}`
+                  )
+                  toast.success('Recipe URL copied to clipboard!')
+                }}
+              >
+                <IoShareSocialOutline className="size-5" />
               </button>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from '@/layout/MainLayout'
+import ErrorPage from '@/error/ErrorPage'
 import PrivateRoute from '@/routes/PrivateRoute'
 import PublicRoute from '@/routes/PublicRoute'
 import Home from '@/pages/Home/Home'
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -75,6 +77,7 @@ export const router = createBrowserRouter([
   {
     path: '/dashboard',
     element: <DashboardLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,

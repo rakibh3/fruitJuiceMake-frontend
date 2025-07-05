@@ -44,10 +44,10 @@ const HowItsWork = () => {
 
     <section className="container mt-24 space-y-8">
       <div>
-        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider dark:text-white">
           How It Works
         </h2>
-        <p className="mb-2 text-center text-xl font-normal tracking-wider text-slate-500">
+        <p className="mb-2 text-center text-xl font-normal tracking-wider text-slate-500 dark:text-gray-300">
           Discover how our Recipe Sharing system connects food lovers, making it
           easy and fun to explore, share, and enjoy culinary creations together!
         </p>
@@ -55,19 +55,19 @@ const HowItsWork = () => {
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-4">
         {howItWorksData?.map((howItWork, i) => (
           <div
-            className="group relative isolate flex flex-col items-center justify-center overflow-hidden rounded-lg bg-white px-6 py-10 text-center"
+            className="group relative isolate flex flex-col items-center justify-center overflow-hidden rounded-lg bg-white px-6 py-10 text-center dark:bg-gray-800"
             key={howItWork.title + i}
           >
-            <span className="absolute -bottom-5 -right-3 -z-10 select-none text-8xl font-bold text-gray-300/70 transition group-hover:text-gray-300">
+            <span className="absolute -bottom-5 -right-3 -z-10 select-none text-8xl font-bold text-gray-300/70 transition group-hover:text-gray-300 dark:text-gray-700">
               {`0${i + 1}`}
             </span>
             <span className="mb-6 text-5xl text-primary">
               <howItWork.icon />
             </span>
-            <h3 className="mb-4 text-xl font-semibold text-slate-800">
+            <h3 className="mb-4 text-xl font-semibold text-slate-800 dark:text-white">
               {howItWork.title}
             </h3>
-            <p className="text-sm leading-normal text-slate-500">
+            <p className="text-sm leading-normal text-slate-500 dark:text-gray-400">
               {howItWork.subtitle}
             </p>
           </div>

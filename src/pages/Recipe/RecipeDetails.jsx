@@ -13,7 +13,7 @@ const RecipeDetails = () => {
       <ImageSlider recipeImage={recipe?.image} imageAlt={recipe?.title} />
       <div className="flex flex-col gap-3 md:flex-row">
         <div className="my-2 grow">
-          <div className="rounded-xl bg-white p-3">
+          <div className="rounded-xl bg-white p-3 dark:bg-gray-800">
             {/* Recipe Creator Profile And Time */}
             {/* <div className="my-2 flex w-full flex-row gap-2 space-y-3 sm:w-auto">
               <div className="flex items-center">
@@ -32,38 +32,38 @@ const RecipeDetails = () => {
             </div> */}
 
             <div>
-              <h1 className="my-6 text-center text-4xl font-bold capitalize">
+              <h1 className="my-6 text-center text-4xl font-bold capitalize dark:text-white">
                 {recipe?.title}
               </h1>
 
-              <div className="mb-4 flex flex-wrap items-center justify-center gap-8 border-y py-1">
+              <div className="mb-4 flex flex-wrap items-center justify-center gap-8 border-y py-1 dark:border-gray-700">
                 <div className="flex items-center gap-2">
-                  <span className="grid size-6 place-items-center rounded bg-gray-200">
-                    <IoEyeOutline className="size-4 text-gray-600" />
+                  <span className="grid size-6 place-items-center rounded bg-gray-200 dark:bg-gray-700">
+                    <IoEyeOutline className="size-4 text-gray-600 dark:text-gray-300" />
                   </span>
-                  <p className="flex gap-1">
-                    <span className="font-bold text-green-800">
+                  <p className="flex gap-1 dark:text-white">
+                    <span className="font-bold text-green-800 dark:text-green-400">
                       {recipe?.view}
                     </span>
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="grid size-6 place-items-center rounded bg-gray-200">
-                    <TbCategory className="size-4 text-gray-600" />
+                  <span className="grid size-6 place-items-center rounded bg-gray-200 dark:bg-gray-700">
+                    <TbCategory className="size-4 text-gray-600 dark:text-gray-300" />
                   </span>
                   <p className="flex gap-1">
-                    <span className="font-medium uppercase text-slate-800">
+                    <span className="font-medium uppercase text-slate-800 dark:text-slate-300">
                       {recipe?.category}
                     </span>
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="grid size-6 place-items-center rounded bg-gray-200">
-                    <FaRegCircleUser className="size-4 text-gray-600" />
+                  <span className="grid size-6 place-items-center rounded bg-gray-200 dark:bg-gray-700">
+                    <FaRegCircleUser className="size-4 text-gray-600 dark:text-gray-300" />
                   </span>
                   <p className="flex gap-1">
-                    <span className="font-medium text-gray-800">Purchase:</span>
-                    <span className="font-medium uppercase text-slate-600">
+                    <span className="font-medium text-gray-800 dark:text-gray-300">Purchase:</span>
+                    <span className="font-medium uppercase text-slate-600 dark:text-slate-400">
                       100+
                     </span>
                   </p>
@@ -73,7 +73,7 @@ const RecipeDetails = () => {
             <div>
               {recipe?.description && (
                 <article
-                  className="prose lg:prose-xl w-full max-w-none"
+                  className="prose lg:prose-xl w-full max-w-none dark:prose-invert"
                   dangerouslySetInnerHTML={{ __html: recipe?.description }}
                 />
               )}

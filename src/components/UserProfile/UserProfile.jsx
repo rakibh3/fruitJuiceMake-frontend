@@ -67,13 +67,13 @@ const UserProfile = ({ user }) => {
       </div>
 
       <div
-        className={`absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
+        className={`absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800 dark:divide-gray-700 dark:ring-gray-700 ${
           isOpen ? '' : 'hidden'
         }`}
       >
         {/* User name */}
         <div className="py-1">
-          <span className="block px-4 py-2 text-sm text-gray-700">
+          <span className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300">
             <p className="text-base font-medium">{user?.displayName}</p>
             <p>{user?.email}</p>
           </span>
@@ -85,7 +85,7 @@ const UserProfile = ({ user }) => {
             <Link
               key={item.label}
               to={item.link}
-              className="block px-4 py-2 text-sm text-gray-700"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               {item.label}
             </Link>
@@ -97,7 +97,7 @@ const UserProfile = ({ user }) => {
           <Link
             type="button"
             onClick={handleLogout}
-            className="block px-4 py-2 text-sm text-gray-700"
+            className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:bg-gray-700"
           >
             Logout
           </Link>

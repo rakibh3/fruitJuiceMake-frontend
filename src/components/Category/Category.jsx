@@ -36,7 +36,7 @@ const Category = ({ onCategoryClick }) => {
           initial={{ opacity: 0, x: -200 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="pb-10 text-left text-2xl font-bold uppercase"
+          className="pb-10 text-left text-2xl font-bold uppercase dark:text-white"
         >
           Our Category
         </motion.h1>
@@ -48,7 +48,7 @@ const Category = ({ onCategoryClick }) => {
               whileInView={'visible'}
               whileHover={{ scale: 1.1 }}
               key={category.id}
-              className="flex flex-row items-center justify-around gap-3 rounded-3xl bg-white px-4 py-2 shadow-[0_0_22px_0_rgba(0,0,0,0.15)]"
+              className="flex flex-row items-center justify-around gap-3 rounded-3xl bg-white px-4 py-2 shadow-[0_0_22px_0_rgba(0,0,0,0.15)] dark:bg-gray-700/90 dark:shadow-gray-600/70"
               onClick={() => onCategoryClick(category.title)}
             >
               <div>
@@ -59,7 +59,7 @@ const Category = ({ onCategoryClick }) => {
                 />
               </div>
               <div>
-                <h1 className="text-lg font-semibold">{category.title}</h1>
+                <h1 className="text-lg font-semibold dark:text-white">{category.title}</h1>
               </div>
             </motion.div>
           ))}

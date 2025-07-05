@@ -6,10 +6,10 @@ const AboutUs = () => {
   return (
     <section className="container">
       <div className="mt-24 text-center">
-        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider">
+        <h2 className="mb-4 text-center text-4xl font-bold uppercase tracking-wider dark:text-white">
           About Us
         </h2>
-        <p className="mb-2 text-center text-xl font-normal tracking-wider text-slate-500 md:px-16">
+        <p className="mb-2 text-center text-xl font-normal tracking-wider text-slate-500 md:px-16 dark:text-gray-300">
           <span className="font-medium text-primary/90">Juicers</span> is all
           about bringing fresh flavors and vibrant experiences to juice lovers
           everywhere. Discover unique juice blends, share your favorite recipes,
@@ -17,23 +17,23 @@ const AboutUs = () => {
           community and let every sip take you on a delicious journey!
         </p>
         <div className="mx-auto mt-10 flex flex-col justify-center gap-10 lg:flex-row">
-          <div className="flex aspect-[4/3] items-center justify-center rounded-xl mix-blend-multiply sm:aspect-[2/1] lg:aspect-square lg:w-96">
+          <div className="flex aspect-[4/3] items-center justify-center rounded-xl sm:aspect-[2/1] lg:aspect-square lg:w-96 dark:mix-blend-screen">
             <img
               src={aboutImg}
               alt="Mix of fruits"
               className="rounded-md object-cover"
             />
           </div>
-          <div className="relative mx-auto flex flex-col items-start justify-center space-y-4 sm:-mt-40 sm:w-[75%] sm:rounded-lg sm:bg-white sm:px-6 sm:py-5 lg:m-0 lg:mt-0 lg:w-3/5 lg:bg-transparent lg:p-0">
-            <h3 className="mb-2 text-xl font-bold capitalize md:text-2xl">
+          <div className="relative mx-auto flex flex-col items-start justify-center space-y-4 sm:-mt-20 sm:w-[75%] sm:rounded-lg sm:bg-white sm:px-6 sm:py-5 lg:m-0 lg:mt-0 lg:w-3/5 lg:bg-transparent lg:px-6 lg:py-5 dark:sm:bg-gray-800">
+            <h3 className="mb-2 text-xl font-bold capitalize md:text-2xl dark:text-white">
               Sip and Share with Fellow Juice Lovers
             </h3>
-            <p className="text-left text-lg font-normal text-slate-500">
+            <p className="text-left text-lg font-normal text-slate-500 dark:text-gray-300">
               Welcome to Juicers, your ultimate destination for discovering
               fresh flavors and connecting with juice enthusiasts around the
               world!
             </p>
-            <p className="text-left text-lg font-normal text-slate-500">
+            <p className="text-left text-lg font-normal text-slate-500 dark:text-gray-300">
               Our mission is simple: to inspire a community that celebrates
               fresh ingredients, creative recipes, and a passion for wellness.
               At Juice Haven, each recipe is a journey, and every sip is an

@@ -13,15 +13,15 @@ const DemoCredentials = ({ setDemoCredentials }) => {
       {demoCredentials.map((credential, index) => (
         <section
           key={index}
-          className="flex w-full max-w-xs items-center justify-between rounded-md bg-gray-100 py-1"
+          className="flex w-full max-w-xs items-center justify-between rounded-md bg-gray-100 py-1 dark:bg-gray-700"
         >
           <div className="flex flex-col items-start space-y-1 px-3 py-1">
-            <p className="text-xs font-medium tracking-wide">
-              Email: <span className="text-slate-600">{credential.email}</span>
+            <p className="text-xs font-medium tracking-wide dark:text-gray-300">
+              Email: <span className="text-slate-600 dark:text-gray-400">{credential.email}</span>
             </p>
-            <p className="text-xs font-medium tracking-wide">
+            <p className="text-xs font-medium tracking-wide dark:text-gray-300">
               Password:{' '}
-              <span className="text-slate-600">{credential.password}</span>
+              <span className="text-slate-600 dark:text-gray-400">{credential.password}</span>
             </p>
           </div>
 
@@ -29,7 +29,7 @@ const DemoCredentials = ({ setDemoCredentials }) => {
             <button
               type="button"
               onClick={() => setDemoCredentials(credential)}
-              className="mr-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm hover:bg-gray-300"
+              className="mr-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-primary shadow-sm hover:bg-gray-300 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-900"
             >
               Use
             </button>

@@ -11,7 +11,7 @@ const PasswordInput = ({ register, errors }) => {
 
   return (
     <>
-      <div className="mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+      <div className="mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-700">
         <TbPassword className="m-2 text-gray-400" />
         <input
           type={isPasswordVisible ? 'text' : 'password'}
@@ -20,7 +20,7 @@ const PasswordInput = ({ register, errors }) => {
             minLength: 8,
           })}
           placeholder="Password"
-          className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+          className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none dark:bg-gray-700 dark:text-white"
         />
         <button
           type="button"
@@ -28,7 +28,7 @@ const PasswordInput = ({ register, errors }) => {
             e.preventDefault()
             togglePasswordVisibility()
           }}
-          className="-ml-9 border-none bg-transparent p-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+          className="-ml-9 border-none bg-transparent p-2 text-gray-500 hover:text-gray-700 focus:outline-none dark:text-gray-300 dark:hover:text-white"
         >
           {isPasswordVisible ? (
             <Eye className="h-5 w-5" />

@@ -14,7 +14,7 @@ const ResponsiveMenu = ({ open }) => {
           transition={{ duration: 0.3 }}
           className="absolute left-0 top-12 z-20 h-screen w-full"
         >
-          <div className="m-6 rounded-3xl bg-primary py-10 text-xl font-semibold uppercase text-white">
+          <div className="m-6 rounded-3xl bg-primary py-10 text-xl font-semibold uppercase text-white dark:bg-gray-800">
             <ul className="flex flex-col items-center gap-10">
               {menuItems.map((item) => (
                 <li key={item.name}>

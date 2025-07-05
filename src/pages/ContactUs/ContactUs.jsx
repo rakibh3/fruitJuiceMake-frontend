@@ -9,10 +9,10 @@ const ContactUs = () => {
   return (
     <section className="container mt-24 antialiased">
       <div>
-        <h2 className="mb-4 text-center text-2xl font-bold uppercase tracking-wide">
+        <h2 className="mb-4 text-center text-2xl font-bold uppercase tracking-wide dark:text-white">
           Contact
         </h2>
-        <p className="mb-2 px-2 text-center text-base font-normal text-slate-500">
+        <p className="mb-2 px-2 text-center text-base font-normal text-slate-500 dark:text-gray-300">
           If you have any inquiries or require assistance, we are here to
           support you.
           <br />
@@ -22,14 +22,14 @@ const ContactUs = () => {
       </div>
 
       <div className="mt-8 flex w-full items-center justify-center">
-        <div className="flex w-full max-w-4xl flex-col space-y-6 overflow-hidden rounded-xl bg-primary/80 p-8 text-white shadow-lg sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
+        <div className="flex w-full max-w-4xl flex-col space-y-6 overflow-hidden rounded-xl bg-primary/80 p-8 text-white shadow-lg sm:p-12 md:flex-row md:space-x-6 md:space-y-0 dark:bg-gray-800">
           {/* Contact Info */}
           <div className="flex flex-col justify-center">
             <div>
-              <h1 className="text-xl font-bold tracking-wide text-slate-200">
+              <h1 className="text-xl font-bold tracking-wide text-slate-200 dark:text-white">
                 Here is our contact information
               </h1>
-              <p className="pr-3 pt-2 text-sm text-slate-200">
+              <p className="pr-3 pt-2 text-sm text-slate-200 dark:text-gray-300">
                 Please feel free to contact us using any of the following
                 methods. We look forward to your communication and are eager to
                 assist you!
@@ -83,37 +83,37 @@ const ContactUs = () => {
           <div className="relative">
             <div className="absolute -right-28 -top-28 z-0 size-40 rounded-full bg-[#407cbc]" />
             <div className="absolute -bottom-20 -left-28 z-0 size-40 rounded-full bg-[#407cbc]" />
-            <div className="relative z-10 w-full rounded-xl bg-white p-8 text-gray-600 shadow-lg md:w-80">
+            <div className="relative z-10 w-full rounded-xl bg-white p-8 text-gray-600 shadow-lg md:w-80 dark:bg-gray-900">
               <form action="" className="flex flex-col space-y-4">
                 <div className="space-y-2">
-                  <label htmlFor="" className="text-sm">
+                  <label htmlFor="" className="text-sm dark:text-gray-300">
                     Name
                   </label>
                   <input
                     type="text"
                     placeholder="Full Name"
-                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80"
+                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80 dark:bg-gray-800 dark:text-white dark:ring-gray-700"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="" className="text-sm">
+                  <label htmlFor="" className="text-sm dark:text-gray-300">
                     Email
                   </label>
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80"
+                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80 dark:bg-gray-800 dark:text-white dark:ring-gray-700"
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="" className="text-sm">
+                  <label htmlFor="" className="text-sm dark:text-gray-300">
                     Message
                   </label>
                   <textarea
                     type="text"
                     rows="5"
                     placeholder="Write your message here"
-                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80"
+                    className="w-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-300 focus:ring-2 focus:ring-primary/80 dark:bg-gray-800 dark:text-white dark:ring-gray-700"
                   />
                 </div>
                 <button className="inline-block self-end rounded-md bg-primary/80 px-3 py-1 font-medium text-white">

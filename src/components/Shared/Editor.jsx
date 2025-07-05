@@ -35,7 +35,7 @@ const Editor = ({ value = '', onChange }) => {
   }
 
   return (
-    <div className="h-56">
+    <div className="h-56 dark:bg-gray-800 dark:text-white">
       <ReactQuill
         className="flex h-full flex-col !rounded-lg"
         modules={modules}

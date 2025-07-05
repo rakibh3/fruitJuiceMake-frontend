@@ -173,18 +173,18 @@ const ReviewSlider = () => {
         <SwiperSlide key={review.id}>
           {({ isActive }) => (
             <div
-              className={`relative space-y-5 rounded-xl border border-gray-300 px-12 py-6 text-center transition ${
-                isActive ? 'bg-white' : 'bg-gray-100'
+              className={`relative space-y-5 rounded-xl border border-gray-300 px-12 py-6 text-center transition dark:border-gray-700 ${
+                isActive ? 'bg-white dark:bg-gray-800' : 'bg-gray-100 dark:bg-gray-700'
               }`}
             >
               <CgQuote
                 className={`absolute -bottom-10 right-0 size-32 ${
-                  isActive ? 'text-primary/40' : 'text-gray-300'
+                  isActive ? 'text-primary/40' : 'text-gray-300 dark:text-gray-600'
                 }`}
               />
               <CgQuote
                 className={`absolute -top-10 left-0 size-32 ${
-                  isActive ? 'text-primary/40' : 'text-gray-300'
+                  isActive ? 'text-primary/40' : 'text-gray-300 dark:text-gray-600'
                 }`}
               />
               <div className="grid place-items-center">
@@ -201,22 +201,22 @@ const ReviewSlider = () => {
                   <HiStar
                     key={`${review.id}-${i}`}
                     className={`size-6 ${
-                      review.rating > i ? 'text-yellow-400' : 'text-gray-300'
+                      review.rating > i ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'
                     }`}
                   />
                 ))}
               </div>
-              <p className="text-sm leading-relaxed text-gray-600">
+              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
                 {review?.content.length > 190
                   ? review?.content?.slice(0, 190) + '...'
                   : review?.content}
               </p>
-              <div className="mx-auto h-px w-20 bg-gray-300"></div>
+              <div className="mx-auto h-px w-20 bg-gray-300 dark:bg-gray-600"></div>
               <div className="space-y-0.5 text-center">
-                <h3 className="font-semibold text-gray-800">
+                <h3 className="font-semibold text-gray-800 dark:text-white">
                   {review.user.profile.name}
                 </h3>
-                <p className="text-center text-xs text-gray-500">
+                <p className="text-center text-xs text-gray-500 dark:text-gray-400">
                   {format(new Date(review.createdAt), 'd MMM, yyyy')}
                 </p>
               </div>

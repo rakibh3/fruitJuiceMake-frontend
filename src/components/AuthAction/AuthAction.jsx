@@ -7,7 +7,7 @@ const AuthAction = () => {
     <div>
       <div className="flex items-center gap-2">
         <button
-          className="hidden rounded-md border-2 px-4 py-2 font-medium text-gray-600 shadow-md hover:bg-gray-100 sm:block"
+          className="hidden rounded-md border-2 px-4 py-2 font-medium text-gray-600 shadow-md hover:bg-gray-100 sm:block dark:text-gray-300 dark:hover:bg-gray-700"
           onClick={() => navigate('/signup')}
         >
           Get Started

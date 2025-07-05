@@ -1,4 +1,4 @@
-import { Menu } from 'lucide-react'
+import { Menu, Sun, Moon } from 'lucide-react'
 import { LeafyGreen } from 'lucide-react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -8,15 +8,17 @@ import useMenuItemsList from '@/hooks/useMenuItemsList'
 import AuthAction from '@/components/AuthAction/AuthAction'
 import UserProfile from '@/components/UserProfile/UserProfile'
 import useAuthentication from '@/hooks/useAuthentication'
+import useTheme from '@/hooks/useTheme'
 
 const Navbar = () => {
   const { user } = useAuthentication()
   const NavbarMenu = useMenuItemsList()
   const [open, setOpen] = useState(false)
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <>
-      <nav className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center border-b bg-white/95 backdrop-blur-sm md:h-14">
+      <nav className="fixed left-0 right-0 top-0 z-50 flex h-14 items-center border-b bg-white backdrop-blur-sm md:h-14 dark:bg-gray-800 dark:border-gray-700">
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
@@ -42,7 +44,7 @@ const Navbar = () => {
 
           {/* Menu Section */}
           <div className="hidden md:block">
-            <ul className="flex items-center gap-6 text-gray-600">
+            <ul className="flex items-center gap-6 text-gray-600 dark:text-gray-300">
               {NavbarMenu.map((item) => (
                 <li key={item.name}>
                   <Link
@@ -56,7 +58,16 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {user?.email ? <UserProfile user={user} /> : <AuthAction />}
+          <div className="flex items-center gap-4">
+            <button onClick={toggleTheme} className="focus:outline-none">
+              {theme === 'light' ? (
+                <Moon className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+              ) : (
+                <Sun className="h-6 w-6 text-gray-800 dark:text-gray-200" />
+              )}
+            </button>
+            {user?.email ? <UserProfile user={user} /> : <AuthAction />}
+          </div>
         </motion.div>
         <ResponsiveMenu open={open} />
       </nav>
@@ -64,3 +75,4 @@ const Navbar = () => {
   )
 }
 export default Navbar
+

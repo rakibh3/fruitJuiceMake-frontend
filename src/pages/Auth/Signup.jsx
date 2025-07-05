@@ -80,7 +80,7 @@ const Signup = () => {
   return (
     <div className="container flex min-h-screen flex-col items-center justify-center py-2">
       <div className="flex w-full flex-1 flex-col items-center justify-center text-center">
-        <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row">
+        <div className="flex w-full max-w-4xl flex-col rounded-2xl bg-white shadow-lg md:flex-row dark:bg-gray-800">
           {/* Sign In */}
           <div className="hidden w-2/5 md:flex">
             <div className="rounded-bl-2xl rounded-tl-2xl bg-primary/80 px-12 py-36 text-white">
@@ -112,7 +112,7 @@ const Signup = () => {
               <div className="flex flex-col items-center">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
-                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-700">
                       <FaRegUser className="m-2 text-gray-400" />
                       <input
                         type="text"
@@ -121,7 +121,7 @@ const Signup = () => {
                           pattern: /^[A-Za-z\s]+$/,
                         })}
                         placeholder="Name"
-                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     {errors?.name && (
@@ -132,7 +132,7 @@ const Signup = () => {
                   </div>
 
                   <div>
-                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1">
+                    <div className="max-w-sx mb-6 flex w-full items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-700">
                       <FaRegEnvelope className="m-2 text-gray-400" />
                       <input
                         type="email"
@@ -142,7 +142,7 @@ const Signup = () => {
                             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         })}
                         placeholder="Email"
-                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none"
+                        className="w-full bg-gray-100 py-3 pl-1 text-sm outline-none dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     {errors?.email && (
@@ -164,12 +164,12 @@ const Signup = () => {
                     {isSubmitting ? <SubmitLoader /> : 'Sign up'}
                   </button>
                 </form>
-                <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-600">
+                <p className="mt-2 text-center text-xs sm:px-6 dark:text-gray-300">
                   Already have an account?
                   <Link
                     rel="noopener noreferrer"
                     to="/signin"
-                    className="ml-1 font-semibold no-underline dark:text-gray-800"
+                    className="ml-1 font-semibold no-underline dark:text-gray-100"
                   >
                     Sign in
                   </Link>

@@ -24,19 +24,19 @@ const AddRecipe = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="container my-16 mt-24 min-h-screen max-w-6xl md:px-20">
-        <h2 className="text-lg font-semibold leading-10 tracking-wide">
+        <h2 className="text-lg font-semibold leading-10 tracking-wide dark:text-white">
           Create Recipe
         </h2>
-        <div className="mt-6 grid gap-2 rounded-lg bg-white p-6 shadow-md">
+        <div className="mt-6 grid gap-2 rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
           <div className="mb-2 grid grid-cols-1 gap-10 md:grid-cols-2">
             {/* Recipe Title */}
             <div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <h2 className="flex text-gray-500">
+                  <h2 className="flex text-gray-500 dark:text-gray-300">
                     Recipe Title<span className="text-red-400">*</span>
                   </h2>
-                  <p className="text-[9px] font-medium text-gray-500">
+                  <p className="text-[9px] font-medium text-gray-500 dark:text-gray-400">
                     (*Max 25 characters)
                   </p>
                 </div>
@@ -48,7 +48,7 @@ const AddRecipe = () => {
                   })}
                   maxLength={25}
                   placeholder="Recipe Title"
-                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
+                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
               </div>
               <div>
@@ -63,12 +63,14 @@ const AddRecipe = () => {
             {/* Category */}
             <div>
               <div className="flex flex-col gap-2">
-                <h2 className="flex text-gray-500">
+                <h2 className="flex text-gray-500 dark:text-gray-300">
                   Category<span className="text-red-400">*</span>
                 </h2>
                 <select
-                  {...register('category', { required: true })}
-                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
+                  {...register('category', {
+                    required: true,
+                  })}
+                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 >
                   {CATEGORIES_OPTIONS.map((cat) => (
                     <option key={cat.value} value={cat.value}>
@@ -92,14 +94,14 @@ const AddRecipe = () => {
             {/* Calories */}
             <div>
               <div className="flex flex-col gap-2">
-                <h2 className="flex text-gray-500">
+                <h2 className="flex text-gray-500 dark:text-gray-300">
                   Total Calories<span className="text-red-400">*</span>
                 </h2>
                 <input
                   type="number"
                   {...register('calories', { required: true })}
                   placeholder="Calories"
-                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
+                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
               </div>
               <div>
@@ -114,14 +116,14 @@ const AddRecipe = () => {
             {/* Preparation Time */}
             <div>
               <div className="flex flex-col gap-2">
-                <h2 className="flex text-gray-500">
+                <h2 className="flex text-gray-500 dark:text-gray-300">
                   Preparation Time<span className="text-red-400">*</span>
                 </h2>
                 <input
                   type="number"
                   {...register('preparationTime', { required: true })}
                   placeholder="Preparation Time"
-                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
+                  className="w-full rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
               </div>
               <div>
@@ -140,10 +142,10 @@ const AddRecipe = () => {
             <div>
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-between">
-                  <h2 className="flex text-gray-500">
+                  <h2 className="flex text-gray-500 dark:text-gray-300">
                     Recipe Sumarry<span className="text-red-400">*</span>
                   </h2>
-                  <p className="text-[9px] font-medium text-gray-500">
+                  <p className="text-[9px] font-medium text-gray-500 dark:text-gray-400">
                     (*Max 90 characters)
                   </p>
                 </div>
@@ -152,7 +154,7 @@ const AddRecipe = () => {
                   maxLength={90}
                   {...register('recipeSummary', { required: true })}
                   placeholder="Provide a brief summary of the recipe (e.g., taste, main ingredients)"
-                  className="w-full resize-none rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none"
+                  className="w-full resize-none rounded-md border-2 border-gray-300 bg-gray-100 py-3 pl-4 text-sm outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                 />
               </div>
               <div>
@@ -172,7 +174,7 @@ const AddRecipe = () => {
 
             {/* Description */}
             <div>
-              <label className="mb-2 block text-gray-500" htmlFor="content">
+              <label className="mb-2 block text-gray-500 dark:text-gray-300" htmlFor="content">
                 Recipe Details<span className="text-red-400">*</span>
               </label>
               <Controller
