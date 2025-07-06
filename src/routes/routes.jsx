@@ -18,6 +18,8 @@ import Overview from '@/pages/Dashboard/Overview/Overview'
 import Profile from '@/pages/Dashboard/Profile/Profile'
 import Settings from '@/pages/Dashboard/Settings/Settings'
 
+import Payment from '@/pages/Payment/Payment';
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -78,6 +80,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <BuyCoins />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/payment',
+        element: (
+          <PrivateRoute>
+            <Payment />
           </PrivateRoute>
         ),
       },

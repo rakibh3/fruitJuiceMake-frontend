@@ -73,7 +73,7 @@ const RecipeDetails = () => {
             <div>
               {recipe?.description && (
                 <article
-                  className="prose lg:prose-xl w-full max-w-none dark:prose-invert"
+                  className="prose lg:prose-xl w-full max-w-none dark:prose-invert dark:text-white"
                   dangerouslySetInnerHTML={{ __html: recipe?.description }}
                 />
               )}
